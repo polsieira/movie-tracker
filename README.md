@@ -58,9 +58,11 @@ To create a production build, use npm run build.
 * SASS
 * JavaScript
 * React
+* React Router
 * Redux
 * Webpack
 * Enzyme
+* Jest
 
 ## Screenshots
 
@@ -70,4 +72,4 @@ To create a production build, use npm run build.
 
 ## Authors
 
-Pol Sieira
+Noah Gibson, Sara Karsh, Pol Sieira
