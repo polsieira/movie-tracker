@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getMovies } from '../../apiCalls';
 import './App.scss';
 
 class App extends Component {
@@ -6,6 +7,15 @@ class App extends Component {
     super();
     this.state = {
 
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const movies = await getMovies();
+      console.log(movies)
+    } catch(error) {
+      console.log(error.message)
     }
   }
 
