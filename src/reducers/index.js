@@ -1,9 +1,11 @@
+// THIS IS THE STORE
+
 import { combineReducers } from 'redux';
-// import { reducer } from './reducer';
+// EX: import { reducer } from './reducer';
 
 // common convention to name the variable rootReducer
-const rootReducer = combineReducers({ 
-  // reducer,
+const rootReducer = combineReducers({
+  // EX: reducer,
 });
 
 export default rootReducer;
