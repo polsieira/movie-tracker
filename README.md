@@ -37,7 +37,7 @@ To create a production build, use npm run build.
 
 ### Run in GitHub Pages
 
-Click this link: https://polsieira.github.io/movie-tracker/
+(Click here)[https://polsieira.github.io/movie-tracker/]
 
 ---
 
