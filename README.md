@@ -12,6 +12,10 @@ A group project during Module 3 of Turing School of Software Design. Welcome to 
 
 ## Setup
 
+### Set up Local Server and Database
+
+Instructions to set up are linked [here](https://github.com/turingschool-examples/favorites-tracker-api)
+
 ### Clone Down and Run Locally
 
 Fork and clone down repo.
