@@ -4,6 +4,8 @@ import { getMovies } from '../../apiCalls';
 import './App.scss';
 import { addMovies, addErrors } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
+import LoginForm from '../LoginForm/Form';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   constructor() {
@@ -25,7 +27,8 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        {this.props.movies && <MovieContainer />}
+        <Route exact path='/' render={() => <MovieContainer /> } />
+        <Route exact path='/login' render={() => <LoginForm /> } />
       </div>
     )
   }

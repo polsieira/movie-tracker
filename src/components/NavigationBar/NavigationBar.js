@@ -1,16 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
 
 const NavigationBar = () => {
 
   return (
     <div className='NavigationBar'>
-      <form action="">
-        <input type="search" />
-        <i class="fa fa-search"></i>
+      <form className='nav-form' action="">
+        <input className='nav-input' type="search" />
+        <i className="fa fa-search"></i>
       </form>
       <h1 className="heading">mooovies.</h1>
-      <button className='sign-in' type='button' >Sign In</button>
+      <Link to='/login'>
+        <button className='sign-in' type='button' >Sign In</button>
+      </Link>
     </div>
   )
 }
