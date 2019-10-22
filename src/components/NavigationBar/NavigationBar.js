@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
 
 const NavigationBar = () => {
@@ -7,9 +8,11 @@ const NavigationBar = () => {
     <div className='NavigationBar'>
       <form className='nav-form' action="">
         <input className='nav-input' type="search" />
-        <i class="fa fa-search"></i>
+        <i className="fa fa-search"></i>
       </form>
-      <button className='sign-in' type='button' >Sign In</button>
+      <Link to='/login'>
+        <button className='sign-in' type='button' >Sign In</button>
+      </Link>
     </div>
   )
 }
