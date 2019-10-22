@@ -3,3 +3,16 @@ export const getMovies = async () => {
   const data = await response.json();
   return data.results;
 }
+
+export const loginUser = async (userInfo) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(userInfo),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const response = await fetch('http://localhost:3001/api/v1/login', options)
+  const data = await response.json();
+  console.log(data)
+}

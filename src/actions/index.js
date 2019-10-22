@@ -11,3 +11,10 @@ export const addErrors = message => {
     message
   })
 }
+
+export const loginUser = userInfo => {
+  return ({
+    type: 'LOGIN_USER',
+    userInfo
+  })
+}
