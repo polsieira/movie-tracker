@@ -1,7 +1,8 @@
 import React from 'react';
 import './MovieContainer.scss';
 import MovieCard from '../MovieCard/MovieCard';
-import { connect } from 'react-redux'
+import NavigationBar from '../NavigationBar/NavigationBar';
+import { connect } from 'react-redux';
 
 const MovieContainer = ({ movies }) => {
   console.log(movies)
@@ -16,9 +17,12 @@ const MovieContainer = ({ movies }) => {
   })
 
   return (
-    <div className='MovieContainer'>
-      {displayMovies}
-    </div>
+    <>
+      <NavigationBar />
+      <div className='MovieContainer'>
+        {displayMovies}
+      </div>
+    </>
   )
 
 }
