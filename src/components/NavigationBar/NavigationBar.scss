@@ -6,8 +6,9 @@ $color: #fff;
   display: flex;
   justify-content: space-between;
   min-height: 90px;
-  opacity: 0.8;
-  position: relative;
+  opacity: 1;
+  position: fixed;
+  width: 100%;
 }
 
 .sign-in{
@@ -49,6 +50,14 @@ $color: #fff;
     transition: 800ms ease all;
     width: 100%;
   }
+}
+
+.heading {
+  color: white;
+  font-family: 'Playfair Display', serif;
+  left: 45%;
+  position: absolute;
+  top: 1%;
 }
 
 form {
