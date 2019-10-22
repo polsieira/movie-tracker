@@ -51,7 +51,7 @@ $color: #fff;
   }
 }
 
-form {
+.nav-form {
     margin: 30px;
     transform: translate(-0%,-0%);
     transition: all 1s;
@@ -64,7 +64,7 @@ form {
     padding: 5px;
 }
 
-input{
+.nav-input{
     position: absolute;
     top: 0;
     left: 0;
@@ -94,16 +94,16 @@ input{
     transition: all 1s;
 }
 
-form:hover{
+.nav-form:hover{
     width: 200px;
     cursor: pointer;
 }
 
-form:hover input{
+.nav-form:hover .nav-input{
     display: block;
 }
 
-form:hover .fa{
+.nav-form:hover .fa{
     background: #1AAB8A;
     color: white;
 }

@@ -1,0 +1,75 @@
+$background-color: #1AAB8A;
+
+.login-form {
+  background-color: $background-color;
+  display: flex;
+}
+
+.login-content {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 66%;
+}
+
+#email,
+#password {
+  border: none;
+  border-radius: 5px;
+  font-size: .8em;
+  height: 30px;
+  margin: 10px 0px;
+  padding-left: 5px;
+  width: 80%;
+}
+
+.login-button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: .8em;
+  height: 30px;
+  margin: 10px 0px;
+  padding-left: 5px;
+  position: relative;
+  width: 80%;
+  transition: 800ms ease all;
+    &:hover{
+    background: #fff;
+    color: #1AAB8A;
+  }
+    &:before,
+    &:after {
+    background: #1AAB8A;
+    content: '';
+    height: 2px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 400ms ease all;
+    width: 0;
+  }
+    &:after {
+    bottom: 0;
+    left: 0;
+    right: inherit;
+    top: inherit;
+  }
+    &:hover:before, 
+    &:hover:after {
+    transition: 800ms ease all;
+    width: 100%;
+  }
+    &:focus {
+  outline: none;
+  }
+}
+
+.form-styles {
+  background-color: #fff;
+  height: 100vh;
+  margin: 0px;
+  width: 33%;
+}

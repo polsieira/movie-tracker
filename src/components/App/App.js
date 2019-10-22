@@ -4,6 +4,7 @@ import { getMovies } from '../../apiCalls';
 import './App.scss';
 import { addMovies } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
+import LoginForm from '../LoginForm/Form';
 
 class App extends Component {
   constructor() {
@@ -25,7 +26,8 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        {this.props.movies && <MovieContainer />}
+        <LoginForm />
+        {/* {this.props.movies && <MovieContainer />} */}
       </div>
     )
   }
