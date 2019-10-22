@@ -1,0 +1,25 @@
+.MovieCard {
+  border: #cecece 1px solid;
+  box-shadow: 2px 2px 2px 1px #f0f0f0;
+  display: flex;
+
+  .movie-poster {
+    width: 200px;
+  }
+
+  .movie-info {
+    padding: 10px;
+
+    .movie-title {
+      font-size: 28px;
+      margin: 0px;
+    }
+
+    .movie-release {
+      font-size: 16px;
+      font-weight: 200;
+      margin: 5px 0px;
+    }
+  }
+
+}

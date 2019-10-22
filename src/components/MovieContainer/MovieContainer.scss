@@ -1,0 +1,13 @@
+.MovieContainer {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  margin: 20px 10%;
+}
+
+@media only screen and (max-width: 900px) {
+  .MovieContainer {
+    gap: 20px;
+    grid-template-columns: 1fr;
+  }
+}

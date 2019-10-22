@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getMovies } from '../../apiCalls';
 import './App.scss';
 import { addMovies } from '../../actions';
+import MovieContainer from '../MovieContainer/MovieContainer';
 
 class App extends Component {
   constructor() {
@@ -15,9 +16,8 @@ class App extends Component {
   async componentDidMount() {
     try {
       const movieData = await getMovies();
-      console.log(movieData)
       this.props.addMovies(movieData);
-    } catch(error) {
+    } catch (error) {
       console.log(error.message)
     }
   }
@@ -25,7 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-
+        {this.props.movies && <MovieContainer />}
       </div>
     )
   }
