@@ -11,9 +11,9 @@ class LoginForm extends Component {
     return (
       <form className='login-form'>
         <div className='login-content'>
-          <label for='email'>Email:</label>
+          <label htmlFor='email'>Email:</label>
           <input id='email' type='text' placeholder='Ex. name@email.com' name='email'></input>
-          <label for='password'>Password (8 characters minimum):</label>
+          <label htmlFor='password'>Password (8 characters minimum):</label>
           <input id='password' type='password' minLength='8' name='password'></input>
           <Link to='/'>
             <button className='login-button' type='button'>Login</button>
