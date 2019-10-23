@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
+import { connect } from 'react-redux';
 
-const NavigationBar = () => {
+const NavigationBar = ({ isSignedIn, name }) => {
 
   return (
     <div className='NavigationBar'>
@@ -11,11 +12,17 @@ const NavigationBar = () => {
         <i className="fa fa-search"></i>
       </form>
       <h1 className="heading">mooovies.</h1>
+      {isSignedIn ? <p className='user'>{name}</p> : null}
       <Link to='/login'>
-        <button className='sign-in' type='button' >Sign In</button>
+        <button className='sign-in' type='button' >{isSignedIn ? 'Sign Out' : 'Sign In'}</button>
       </Link>
     </div>
   )
 }
 
-export default NavigationBar;
+const mapStateToProps = ({ user }) => ({
+  isSignedIn: user.isSignedIn,
+  name: user.name
+});
+
+export default connect(mapStateToProps)(NavigationBar);
