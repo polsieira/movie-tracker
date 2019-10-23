@@ -5,9 +5,7 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
 
 const MovieContainer = ({ movies }) => {
-  console.log(movies)
   const displayMovies = movies.map(movie => {
-    console.log(movie)
     return (
       <MovieCard
         {...movie}

@@ -4,7 +4,7 @@ export const getMovies = async () => {
   return data.results;
 }
 
-export const loginUser = async (userInfo) => {
+export const loginUserCheck = async (userInfo) => {
   const options = {
     method: 'POST',
     body: JSON.stringify(userInfo),
