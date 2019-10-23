@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Form.scss';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions'
+import { loginUser } from '../../actions';
 import { Redirect } from 'react-router-dom';
+import { loginUserCheck } from "../../apiCalls";
 
 class LoginForm extends Component {
   constructor() {
@@ -11,7 +12,7 @@ class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
-      isSignedIn: false
+      error: ''
     }
   }
 
@@ -19,14 +20,22 @@ class LoginForm extends Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleClick = e => {
+  handleClick = async e => {
     e.preventDefault();
-    this.props.loginUser({
+    const response = await loginUserCheck({
       email: this.state.email,
       password: this.state.password,
-      isSignedIn: true
-    })
-    this.setState({ isSignedIn: true })
+    });
+    if (response.id) {
+      this.props.loginUser({
+        name: response.name,
+        id: response.id,
+        isSignedIn: true
+      })
+    } else {
+      this.setState({ hasError: response.error })
+    }
+    console.log(response)
     this.clearInputs()
   }
 
@@ -38,7 +47,9 @@ class LoginForm extends Component {
   }
 
   render() {
-    if (this.state.isSignedIn) { return <Redirect to='/' /> };
+    console.log(!this.state.error, this.props.isSignedIn)
+    console.log(this.props)
+    if (!this.state.error && this.props.isSignedIn) { return <Redirect to='/' /> };
     return (
       <form className='login-form'>
         <div className='login-content'>
@@ -70,8 +81,12 @@ class LoginForm extends Component {
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  isSignedIn: user.isSignedIn
+})
+
 const mapDispatchToProps = dispatch => ({
   loginUser: userInfo => dispatch(loginUser(userInfo))
 })
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
