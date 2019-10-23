@@ -1,4 +1,4 @@
-export const errors = (state = [], action) => {
+export const error = (state = '', action) => {
   switch (action.type) {
     case 'ADD_ERRORS':
       return action.message;
@@ -6,3 +6,4 @@ export const errors = (state = [], action) => {
       return state;
   }
 }
+
