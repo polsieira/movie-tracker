@@ -10,6 +10,7 @@ const NavigationBar = () => {
         <input className='nav-input' type="search" />
         <i className="fa fa-search"></i>
       </form>
+      <h1 className="heading">mooovies.</h1>
       <Link to='/login'>
         <button className='sign-in' type='button' >Sign In</button>
       </Link>

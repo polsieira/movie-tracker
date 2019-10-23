@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from '../../apiCalls';
 import './App.scss';
-import { addMovies } from '../../actions';
+import { addMovies, addErrors } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import LoginForm from '../LoginForm/Form';
 import { Route } from 'react-router-dom';
@@ -20,7 +20,7 @@ class App extends Component {
       const movieData = await getMovies();
       this.props.addMovies(movieData);
     } catch (error) {
-      console.log(error.message)
+      this.props.addErrors(error.message);
     }
   }
 
@@ -35,11 +35,13 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  addMovies: movies => dispatch(addMovies(movies))
+  addMovies: movies => dispatch(addMovies(movies)),
+  addErrors: message => dispatch(addErrors(message))
 })
 
 const mapStateToProps = state => ({
   movies: state.movies,
+  errors: state.errors,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
