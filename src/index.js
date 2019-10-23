@@ -10,7 +10,8 @@ import App from './components/App/App';
 import * as serviceWorker from './serviceWorker';
 import { HashRouter } from 'react-router-dom'
 
-const store = createStore(rootReducer, composeWithDevTools());
+const initialState = {isSignedIn: false}
+const store = createStore(rootReducer, initialState, composeWithDevTools());
 
 ReactDOM.render(
   <Provider store={store}>
