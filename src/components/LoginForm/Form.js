@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Form.scss';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { loginUser } from '../../actions'
 import { Redirect } from 'react-router-dom';
 
 class LoginForm extends Component {
@@ -23,8 +23,10 @@ class LoginForm extends Component {
     e.preventDefault();
     this.props.loginUser({
       email: this.state.email,
-      password: this.state.password
+      password: this.state.password,
+      isSignedIn: true
     })
+    this.setState({ isSignedIn: true })
     this.clearInputs()
   }
 
@@ -36,8 +38,8 @@ class LoginForm extends Component {
   }
 
   render() {
-    isSignedIn ? <Redirect to='/'>
-      return (
+    if (this.state.isSignedIn) { return <Redirect to='/' /> };
+    return (
       <form className='login-form'>
         <div className='login-content'>
           <label htmlFor='email'>Email:</label>
@@ -64,12 +66,12 @@ class LoginForm extends Component {
         </div>
         <div className='form-styles'></div>
       </form>
-      )
-    }
+    )
   }
-  
+}
+
 const mapDispatchToProps = dispatch => ({
-        loginUser: userInfo => dispatch( loginUser(userInfo) )
-    })
-    
+  loginUser: userInfo => dispatch(loginUser(userInfo))
+})
+
 export default connect(null, mapDispatchToProps)(LoginForm);
