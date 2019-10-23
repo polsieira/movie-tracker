@@ -26,6 +26,7 @@ $background-color: #1AAB8A;
 }
 
 .login-button {
+  background-color: $background-color;
   border: none;
   border-radius: 5px;
   cursor: pointer;
