@@ -1,8 +1,17 @@
 .MovieContainer {
   display: grid;
   gap: 20px;
+  height: 100vh;
   grid-template-columns: 1fr 1fr;
   padding: 150px 10%;
+}
+
+.errorMsg {
+  color: black;
+  font-size: 36px;
+  margin: 0px;
+  padding: 200px;
+  text-align: center;
 }
 
 @media only screen and (max-width: 900px) {
