@@ -12,7 +12,8 @@ class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
-      error: ''
+      error: '',
+      showModal: false,
     }
   }
 
@@ -50,6 +51,7 @@ class LoginForm extends Component {
     console.log(!this.state.error, this.props.isSignedIn)
     console.log(this.props)
     if (!this.state.error && this.props.isSignedIn) { return <Redirect to='/' /> };
+
     return (
       <form className='login-form'>
         <div className='login-content'>
@@ -74,7 +76,37 @@ class LoginForm extends Component {
           <Link to='/'>
             <button className='login-button' type='button' onClick={this.handleClick}>Login</button>
           </Link>
+            <button className='create-user' type='button' onClick={() => {
+              this.setState({ showModal: true})
+            }}>Create New User</button>
         </div>
+        {this.state.showModal && 
+        <div className='modal-background'>
+          <div className='modal-content'>
+            <label HTMLfor='create-name'>Name</label>
+            <input 
+            id='create-name'
+            type='text' 
+            placeholder='Name'
+            ></input>
+            <label HTMLfor='create-email'>Email</label>
+            <input 
+            id='create-email'
+            type='text' 
+            placeholder='Email'
+            ></input>
+            <label HTMLfor='create-password'>Password</label>
+            <input 
+            id='create-password'
+            type='password'
+            placeholder='Password'
+            ></input>
+            <button id='create-button' type='button' onClick={() => {
+            this.setState({ showModal: false })
+          }}>Create User</button>
+          </div>
+        </div>
+      }
         <div className='form-styles'></div>
       </form>
     )
