@@ -4,7 +4,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
 
-const MovieContainer = ({ movies }) => {
+const MovieContainer = ({ movies, error }) => {
   const displayMovies = movies.map(movie => {
     return (
       <MovieCard
@@ -17,6 +17,7 @@ const MovieContainer = ({ movies }) => {
   return (
     <>
       <NavigationBar />
+      {error && <p className='errorMsg'>Unable to load movies. We hate movies. Go to IMDB.</p>}
       <div className='MovieContainer'>
         {displayMovies}
       </div>
@@ -25,9 +26,9 @@ const MovieContainer = ({ movies }) => {
 
 }
 
-const mapStateToProps = ({ movies, user }) => ({
+const mapStateToProps = ({ movies, error }) => ({
   movies: movies,
-  isSignedIn: user.isSignedIn
+  error
 });
 
 export default connect(mapStateToProps)(MovieContainer);
