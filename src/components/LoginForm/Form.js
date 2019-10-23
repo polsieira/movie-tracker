@@ -32,8 +32,9 @@ class LoginForm extends Component {
         id: response.id,
         isSignedIn: true
       })
+      this.setState({ error: '' })
     } else {
-      this.setState({ hasError: response.error })
+      this.setState({ error: response.error })
     }
     console.log(response)
     this.clearInputs()
@@ -53,6 +54,7 @@ class LoginForm extends Component {
     return (
       <form className='login-form'>
         <div className='login-content'>
+          {this.state.error && <div className='sign-in-error'>{`*${this.state.error}`}</div>}
           <label htmlFor='email'>Email:</label>
           <input
             id='email'
