@@ -25,8 +25,9 @@ const MovieContainer = ({ movies }) => {
 
 }
 
-const mapStateToProps = state => ({
-  movies: state.movies
+const mapStateToProps = ({ movies, user }) => ({
+  movies: movies,
+  isSignedIn: user.isSignedIn
 });
 
 export default connect(mapStateToProps)(MovieContainer);
