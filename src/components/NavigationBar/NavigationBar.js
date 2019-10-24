@@ -14,7 +14,7 @@ const NavigationBar = ({ isSignedIn, name }) => {
       <h1 className="heading">mooovies.</h1>
       {isSignedIn ? <p className='user'>{name}</p> : null}
       <Link to='/login'>
-        <button className='sign-in' type='button' >{isSignedIn ? 'Sign Out' : 'Sign In'}</button>
+        {isSignedIn ? <button className='sign-out' type='button' >Sign Out</button> : <button className='sign-in' type='button' >Sign In</button>}
       </Link>
     </div>
   )

@@ -26,6 +26,7 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password,
     });
+    console.log(response)
     if (response.id) {
       this.props.loginUser({
         name: response.name,
@@ -48,8 +49,6 @@ class LoginForm extends Component {
   }
 
   render() {
-    console.log(!this.state.error, this.props.isSignedIn)
-    console.log(this.props)
     if (!this.state.error && this.props.isSignedIn) { return <Redirect to='/' /> };
     return (
       <form className='login-form'>
