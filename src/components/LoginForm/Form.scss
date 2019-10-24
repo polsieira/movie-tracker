@@ -93,8 +93,8 @@ $background-color: #1AAB8A;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 600px;
-  width: 400px;
+  height: 80%;
+  width: 85%;
 }
 
 #create-name,
@@ -108,4 +108,10 @@ $background-color: #1AAB8A;
   margin: 5px;
   padding-left: 5px;
   width: 60%;
+}
+
+.modal-styles {
+  background-color: #fff;
+  height: 100%;
+  width: 100px;
 }

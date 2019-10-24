@@ -83,19 +83,19 @@ class LoginForm extends Component {
         {this.state.showModal && 
         <div className='modal-background'>
           <div className='modal-content'>
-            <label HTMLfor='create-name'>Name</label>
+            <label htmlFor='create-name'>Name</label>
             <input 
             id='create-name'
             type='text' 
             placeholder='Name'
             ></input>
-            <label HTMLfor='create-email'>Email</label>
+            <label htmlFor='create-email'>Email</label>
             <input 
             id='create-email'
             type='text' 
             placeholder='Email'
             ></input>
-            <label HTMLfor='create-password'>Password</label>
+            <label htmlFor='create-password'>Password</label>
             <input 
             id='create-password'
             type='password'
@@ -104,8 +104,8 @@ class LoginForm extends Component {
             <button id='create-button' type='button' onClick={() => {
             this.setState({ showModal: false })
           }}>Create User</button>
-          </div>
         </div>
+      </div>
       }
         <div className='form-styles'></div>
       </form>
