@@ -16,9 +16,9 @@ export const loginUserCheck = async (userInfo) => {
     }
   }
   const response = await fetch('http://localhost:3001/api/v1/login', options)
-  if (!response.ok) {
-    throw new Error('There was an error logining in')
-  }
+  // if (!response.ok) {
+  //   throw new Error('There was an error logining in')
+  // }
   const data = await response.json();
   return data;
 }
