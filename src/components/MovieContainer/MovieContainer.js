@@ -10,6 +10,7 @@ const MovieContainer = ({ movies, error }) => {
       <MovieCard
         {...movie}
         key={movie.id}
+        id={movie.id}
       />
     )
   })

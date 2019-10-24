@@ -27,6 +27,7 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password,
     });
+    console.log(response)
     if (response.id) {
       this.props.loginUser({
         name: response.name,
