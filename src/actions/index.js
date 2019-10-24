@@ -5,12 +5,21 @@ export const addMovies = movies => {
   })
 }
 
-export const addErrors = message => {
+export const hasErrored = message => {
   return ({
-    type: 'ADD_ERRORS',
+    type: 'HAS_ERRORED',
     message
   })
 }
+
+export const isLoading = bool => {
+  return ({
+    type: 'HAS_ERRORED',
+    bool
+  })
+}
+
+
 
 export const loginUser = ({ name, id, isSignedIn }) => {
   return ({

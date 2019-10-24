@@ -48,7 +48,7 @@ class LoginForm extends Component {
   }
 
   render() {
-    if (!this.state.error && this.props.isSignedIn) { return <Redirect to='/' /> };
+    if (!this.state.error && this.props.user.isSignedIn) { return <Redirect to='/' /> };
     return (
       <form className='login-form'>
         <div className='login-content'>
@@ -82,7 +82,7 @@ class LoginForm extends Component {
 }
 
 const mapStateToProps = ({ user }) => ({
-  isSignedIn: user.isSignedIn
+  user
 })
 
 const mapDispatchToProps = dispatch => ({
