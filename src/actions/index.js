@@ -14,12 +14,10 @@ export const hasErrored = message => {
 
 export const isLoading = bool => {
   return ({
-    type: 'HAS_ERRORED',
+    type: 'IS_LOADING',
     bool
   })
 }
-
-
 
 export const loginUser = ({ name, id, isSignedIn }) => {
   return ({

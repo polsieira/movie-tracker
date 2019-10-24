@@ -17,11 +17,15 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    const { addMovies, isLoading, hasErrored } = this.props;
     try {
+      isLoading(true);
       const movieData = await getMovies();
-      this.props.addMovies(movieData);
+      isLoading(false);
+      addMovies(movieData);
     } catch (error) {
-      this.props.addErrors(error.message);
+      isLoading(false);
+      hasErrored(error.message);
     }
   }
 
