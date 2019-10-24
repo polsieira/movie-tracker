@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
 import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
-const NavigationBar = ({ isSignedIn, name }) => {
+const NavigationBar = ({ isSignedIn, name, loginUser }) => {
 
   return (
     <div className='NavigationBar'>
@@ -14,7 +15,7 @@ const NavigationBar = ({ isSignedIn, name }) => {
       <h1 className="heading">mooovies.</h1>
       {isSignedIn ? <p className='user'>{name}</p> : null}
       <Link to='/login'>
-        <button className='sign-in' type='button' >{isSignedIn ? 'Sign Out' : 'Sign In'}</button>
+        <button className='sign-in' type='button' onClick={() => loginUser({name: '', id: '', isSignedIn: false})}>{isSignedIn ? 'Sign Out' : 'Sign In'}</button>
       </Link>
     </div>
   )
@@ -25,4 +26,8 @@ const mapStateToProps = ({ user }) => ({
   name: user.name
 });
 
-export default connect(mapStateToProps)(NavigationBar);
+const mapDispatchToProps = dispatch => ({
+  loginUser: userInfo => dispatch( loginUser(userInfo) )
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);

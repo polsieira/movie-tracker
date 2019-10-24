@@ -5,7 +5,8 @@ export const user = (state = {}, action) => {
         name: action.name,
         id: action.id,
         isSignedIn: action.isSignedIn
-      };
+      }
+    
     default:
       return state;
   }

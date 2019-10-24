@@ -3,6 +3,7 @@ import './MovieContainer.scss';
 import MovieCard from '../MovieCard/MovieCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
 const MovieContainer = ({ movies, error }) => {
   const displayMovies = movies.map(movie => {
