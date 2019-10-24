@@ -13,7 +13,8 @@ class LoginForm extends Component {
     this.state = {
       email: '',
       password: '',
-      error: ''
+      error: '',
+      showModal: false,
     }
   }
 
@@ -52,7 +53,7 @@ class LoginForm extends Component {
   render() {
     if (!this.state.error && this.props.user.isSignedIn) { return <Redirect to='/' /> };
     return (
-      <form className='login-container'>
+      <div className='login-container'>
         <div className='login-content'>
           <IoIosFilm className='film-icon' />
           <h1 className='login-heading'>Log In</h1>
@@ -76,12 +77,45 @@ class LoginForm extends Component {
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <Link to='/' className='link'>
-              <button className='login-button' type='button' onClick={this.handleClick}>Login</button>
-            </Link>
+            <div className='login-buttons'>
+              <Link to='/' className='link'>
+                <button className='login-button' type='button' onClick={this.handleClick}>Login</button>
+              </Link>
+              <button className='login-button create-user' type='button' onClick={() => {
+              this.setState({ showModal: true })
+            }}>Create New User</button>
+            </div>
           </form>
         </div>
-      </form>
+
+        {this.state.showModal && 
+        <div className='modal-background'>
+          <div className='modal-content'>
+            <label htmlFor='create-name'>Name</label>
+            <input 
+            id='create-name'
+            type='text' 
+            placeholder='Name'
+            ></input>
+            <label htmlFor='create-email'>Email</label>
+            <input 
+            id='create-email'
+            type='text' 
+            placeholder='Email'
+            ></input>
+            <label htmlFor='create-password'>Password</label>
+            <input 
+            id='create-password'
+            type='password'
+            placeholder='Password'
+            ></input>
+            <button id='create-button' type='button' onClick={() => {
+            this.setState({ showModal: false })
+          }}>Create User</button>
+        </div>
+      </div>
+      }
+      </div>
     )
   }
 }
