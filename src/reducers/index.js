@@ -2,16 +2,15 @@
 
 import { combineReducers } from 'redux';
 import { movies } from './movies';
-import { user } from './user'
-import { error } from './error'
-// EX: import { reducer } from './reducer';
+import { user } from './user';
+import { errorMsg } from './errorMsg';
+import { isLoading } from './isLoading';
 
-// common convention to name the variable rootReducer
 const rootReducer = combineReducers({
-  // EX: reducer,
   movies,
   user,
-  error
+  errorMsg,
+  isLoading
 });
 
 export default rootReducer;

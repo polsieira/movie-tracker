@@ -1,28 +1,54 @@
 $background-color: #1AAB8A;
 
-.login-form {
-  background-color: $background-color;
+.login-container {
+  background-color: rgb(237, 237, 237);
   display: flex;
+  height: 100vh;
+}
+
+.film-icon {
+  height: 100px;
+  width: 100px;
+}
+
+.login-heading {
+  margin: 0px;
+}
+
+.sign-in-error {
+  color: white;
+  font-size: 20px;
 }
 
 .login-content {
   align-items: center;
+  background: $background-color;
+  box-shadow: 2px 2px 2px rgb(189, 189, 189);
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 20px;
-  width: 66%;
+  margin: 50px 50px;
+  width: 500px;
+}
+
+.login-form {
+  background: $background-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 50px;
 }
 
 #email,
 #password {
-  border: none;
+  box-sizing: border-box;
   border-radius: 5px;
   font-size: .8em;
   height: 30px;
   margin: 10px 0px;
   padding-left: 5px;
-  width: 80%;
+  width: 100%;
 }
 
 .login-button {
@@ -31,11 +57,11 @@ $background-color: #1AAB8A;
   border-radius: 5px;
   cursor: pointer;
   font-size: .8em;
-  height: 30px;
+  height: 50px;
   margin: 10px 0px;
   padding-left: 5px;
   position: relative;
-  width: 300px;
+  width: 100%;
   transition: 800ms ease all;
     &:hover{
     background: #fff;
@@ -66,6 +92,16 @@ $background-color: #1AAB8A;
     &:focus {
   outline: none;
   }
+  
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-user {
+  width: 50%;
 }
 
 .form-styles {
@@ -114,4 +150,7 @@ $background-color: #1AAB8A;
   background-color: #fff;
   height: 100%;
   width: 100px;
+}
+.link {
+  width: 50%;
 }
