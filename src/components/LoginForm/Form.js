@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Form.scss';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { loginUser, createUser} from '../../actions';
 import { Redirect } from 'react-router-dom';
-import { loginUserCheck } from "../../apiCalls";
+import { loginUserCheck, createUserCheck } from "../../apiCalls";
 import { IoIosFilm } from 'react-icons/io';
 
 class LoginForm extends Component {
@@ -15,6 +15,9 @@ class LoginForm extends Component {
       password: '',
       error: '',
       showModal: false,
+      name: '',
+      newEmail: '',
+      newPassword: ''
     }
   }
 
@@ -46,8 +49,30 @@ class LoginForm extends Component {
   clearInputs = () => {
     this.setState({
       email: '',
-      password: ''
+      password: '',
+      name: ''
     })
+  }
+
+  handleCreateUser = async () => {
+    const response = await createUserCheck({
+      email: this.state.newEmail,
+      name: this.state.name,
+      password: this.state.newPassword
+    })
+
+    if (response.id) {
+      this.props.createUser({
+        name: response.name,
+        email: response.newEmail,
+        password: response.newPassword
+      })
+      this.setState({ error: '' })
+    } else if(response.error.constraint === 'email') {
+      this.setState({ error: 'User already exists' })
+    }
+    console.log(response)
+    this.clearInputs()
   }
 
   render() {
@@ -96,21 +121,31 @@ class LoginForm extends Component {
             id='create-name'
             type='text' 
             placeholder='Name'
+            name='name'
+            value={this.state.name}
+            onChange={this.handleChange}
             ></input>
             <label htmlFor='create-email'>Email</label>
             <input 
             id='create-email'
             type='text' 
             placeholder='Email'
+            name='newEmail'
+            value={this.state.newEmail}
+            onChange={this.handleChange}
             ></input>
             <label htmlFor='create-password'>Password</label>
             <input 
             id='create-password'
             type='password'
             placeholder='Password'
+            name='newPassword'
+            value={this.state.newPassword}
+            onChange={this.handleChange}
             ></input>
             <button id='create-button' type='button' onClick={() => {
             this.setState({ showModal: false })
+            this.handleCreateUser();
           }}>Create User</button>
         </div>
       </div>
@@ -125,7 +160,8 @@ const mapStateToProps = ({ user }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  loginUser: userInfo => dispatch(loginUser(userInfo))
+  loginUser: userInfo => dispatch(loginUser(userInfo)),
+  createUser: userInfo => dispatch(createUser(userInfo))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
