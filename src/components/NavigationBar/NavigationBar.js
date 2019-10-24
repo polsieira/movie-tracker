@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './NavigationBar.scss';
 import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
-const NavigationBar = ({ isSignedIn, name }) => {
+const NavigationBar = ({ isSignedIn, name, loginUser }) => {
 
   return (
     <div className='NavigationBar'>
@@ -25,4 +26,8 @@ const mapStateToProps = ({ user }) => ({
   name: user.name
 });
 
-export default connect(mapStateToProps)(NavigationBar);
+const mapDispatchToProps = dispatch => ({
+  loginUser: userInfo => dispatch( loginUser(userInfo) )
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavigationBar);
