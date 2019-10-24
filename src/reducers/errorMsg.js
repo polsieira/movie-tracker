@@ -1,6 +1,6 @@
-export const error = (state = '', action) => {
+export const errorMsg = (state = '', action) => {
   switch (action.type) {
-    case 'ADD_ERRORS':
+    case 'HAS_ERRORED':
       return action.message;
     default:
       return state;

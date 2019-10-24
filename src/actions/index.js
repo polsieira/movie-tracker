@@ -5,10 +5,17 @@ export const addMovies = movies => {
   })
 }
 
-export const addErrors = message => {
+export const hasErrored = message => {
   return ({
-    type: 'ADD_ERRORS',
+    type: 'HAS_ERRORED',
     message
+  })
+}
+
+export const isLoading = bool => {
+  return ({
+    type: 'IS_LOADING',
+    bool
   })
 }
 

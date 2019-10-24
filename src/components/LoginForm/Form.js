@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { loginUserCheck } from "../../apiCalls";
+import { IoIosFilm } from 'react-icons/io';
 
 class LoginForm extends Component {
   constructor() {
@@ -48,41 +49,44 @@ class LoginForm extends Component {
   }
 
   render() {
-    if (!this.state.error && this.props.isSignedIn) { return <Redirect to='/' /> };
+    if (!this.state.error && this.props.user.isSignedIn) { return <Redirect to='/' /> };
     return (
-      <form className='login-form'>
+      <form className='login-container'>
         <div className='login-content'>
-          {this.state.error && <div className='sign-in-error'>{`*${this.state.error}`}</div>}
-          <label htmlFor='email'>Email:</label>
-          <input
-            id='email'
-            type='text'
-            placeholder='Ex. name@email.com'
-            name='email'
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-          <label htmlFor='password'>Password (8 characters minimum):</label>
-          <input
-            id='password'
-            type='password'
-            minLength='8'
-            name='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <Link to='/'>
-            <button className='login-button' type='button' onClick={this.handleClick}>Login</button>
-          </Link>
+          <IoIosFilm className='film-icon' />
+          <h1 className='login-heading'>Log In</h1>
+          <form className='login-form'>
+            {this.state.error && <div className='sign-in-error'>{`*${this.state.error}`}</div>}
+            <label htmlFor='email'>Email:</label>
+            <input
+              id='email'
+              type='text'
+              placeholder='Ex. name@email.com'
+              name='email'
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+            <label htmlFor='password'>Password (8 characters minimum):</label>
+            <input
+              id='password'
+              type='password'
+              minLength='8'
+              name='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+            <Link to='/' className='link'>
+              <button className='login-button' type='button' onClick={this.handleClick}>Login</button>
+            </Link>
+          </form>
         </div>
-        <div className='form-styles'></div>
       </form>
     )
   }
 }
 
 const mapStateToProps = ({ user }) => ({
-  isSignedIn: user.isSignedIn
+  user
 })
 
 const mapDispatchToProps = dispatch => ({
