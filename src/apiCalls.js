@@ -36,3 +36,18 @@ export const createUserCheck = async (userInfo) => {
   const data = await response.json();
   return data;
 }
+
+export const addFavorite = async (id, faveInfo) => {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(faveInfo),
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  }
+  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
+  // console.log('response', response)
+  const data = await response.json();
+  console.log('fave', data)
+  return data
+}
