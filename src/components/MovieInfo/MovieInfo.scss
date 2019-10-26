@@ -8,13 +8,13 @@ section {
   width: 100%;
 }
 
-.movie-info {
+.movie-info-full {
   position: relative;
   padding: 0;
   margin: 0;
 }
 
-.movie-info:after {
+.movie-info-full:after {
   content: "";
   position: absolute;
   display: block;

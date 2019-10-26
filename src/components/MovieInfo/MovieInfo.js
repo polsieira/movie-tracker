@@ -10,7 +10,7 @@ const MovieInfo = ({id, movies}) => {
   const date = `${d.getFullYear()}`;
     return (
       <section>
-        <div className='movie-info'>
+        <div className='movie-info-full'>
           <figure className='movie-figure'>
             <figcaption>
               <h1 className='movie-info-header'>{`${title}(${date})`}</h1>
