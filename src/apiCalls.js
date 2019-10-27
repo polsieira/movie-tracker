@@ -55,7 +55,9 @@ export const postFavorite = async (id, faveInfo) => {
       'Content-Type' : 'application/json'
     }
   }
+  console.log(id)
   const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
-  const data = await response.json();
-  return data
+  const addedFavorite = await response.json();
+  console.log('added favorite', addedFavorite)
+  return addedFavorite
 }

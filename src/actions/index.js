@@ -46,11 +46,12 @@ export const getFavorites = faves => {
   })
 }
 
-export const addFavorite = async (id,favorite) => {
-  const posted = await postFavorite(id, favorite)//change API call to postFavorite
-  return ({
-    type: 'ADD_FAVORITE',
-    posted
+export const addFavorite = (id,favorite) => {
+  return postFavorite(id, favorite).then(result => {
+    return ({
+      type: 'ADD_FAVORITE',
+      result
+    })
   })
 }
 

@@ -30,6 +30,10 @@ class App extends Component {
     }
   }
 
+  handleFavorite() {
+    
+  }
+
   render() {
     return (
       <div className='App'>
@@ -41,23 +45,11 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = ({ movies, errorMsg, isLoading }) => ({
-//   movies,
-//   errorMsg,
-//   isLoading,
-// })
-
-const mapStateToProps = (state) => {
-  console.log('app', state)
-  return (
-    {
-      movies: state.movies,
-      errorMsg: state.errorMsg,
-      isLoading: state.isLoading,
-      // favorites: state.favorites
-    }
-  )
-}
+const mapStateToProps = ({ movies, errorMsg, isLoading }) => ({
+  movies,
+  errorMsg,
+  isLoading,
+})
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({

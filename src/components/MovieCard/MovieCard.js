@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 // import { postFavorite } from '../../apiCalls'
 import { addFavorite } from '../../actions'
 
-const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user }) => {
+const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user, addFavorite }) => {
   console.log('user', user)
   // console.log('user id', typeof this.state.id)
   const d = new Date(`${release_date}`);
@@ -44,21 +44,12 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
   )
 }
 
-// const mapStateToProps = (state) => (
-//   return ({
-//   user: state.user,
-//   favorites: state.favorites
-// })
+const mapStateToProps = state => ({
+  user: state.user,
+  favorites: state.favorites
+})
 
-const mapStateToProps = (state) => {
-  console.log('user below', state)
-  return (
-    {
-      user: state.user,
-      favorites: state.favorites
-    }
-  )
-}
+
 
 const mapDispatchToProps = dispatch => ({
   addFavorite: (id,favorite) => dispatch(addFavorite(id, favorite))
