@@ -3,10 +3,8 @@ export const favorites = (state = [], action) => {
     case 'GET_FAVORITES':
       return action.faves;
     case 'ADD_FAVORITE':
-      console.log('were here')
-      return [...state, action.result]
+      return [...state, action.favorite]
     default:
-        console.log(action.type)
       return state
   }
 }

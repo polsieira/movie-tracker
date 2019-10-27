@@ -46,13 +46,18 @@ export const getFavorites = faves => {
   })
 }
 
-export const addFavorite = (id,favorite) => {
-  return postFavorite(id, favorite).then(result => {
-    return ({
-      type: 'ADD_FAVORITE',
-      result
-    })
+export const addFavorite = favorite => {
+  return ({
+    type: 'ADD_FAVORITE',
+    favorite
   })
+}
+
+export const fetchAndPostFavorite = (id,favorite) => {
+  return (dispatch) => {
+    return postFavorite(id, favorite)
+      .then(result => dispatch(addFavorite(result)) )
+  } 
 }
 
 

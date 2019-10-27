@@ -4,7 +4,7 @@ import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 // import { postFavorite } from '../../apiCalls'
-import { addFavorite } from '../../actions'
+import { fetchAndPostFavorite } from '../../actions'
 
 const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user, addFavorite }) => {
   console.log('user', user)
@@ -52,7 +52,7 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  addFavorite: (id,favorite) => dispatch(addFavorite(id, favorite))
+  addFavorite: (id,favorite) => dispatch(fetchAndPostFavorite(id, favorite))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
