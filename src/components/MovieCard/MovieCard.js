@@ -3,11 +3,14 @@ import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { addFavorite } from '../../apiCalls'
+// import { postFavorite } from '../../apiCalls'
+import { addFavorite } from '../../actions'
 
 const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user }) => {
   // console.log('user id', typeof this.state.id)
   const d = new Date(`${release_date}`);
+  // const isFavorite = favorites.filter(favorite => favorite.includes(title))
+  // console.log(isFavorite)
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
   return (
@@ -40,8 +43,13 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
   )
 }
 
-const mapStateToProps = ({ user }) => ({
-  user
+const mapStateToProps = ({ user, favorites }) => ({
+  user,
+  favorites
 })
 
-export default connect(mapStateToProps)(MovieCard);
+const mapDispatchToProps = dispatch => ({
+  addFavorite: (id,favorite) => dispatch(addFavorite(id, favorite))
+})
+
+export default connect(mapDispatchToProps,mapStateToProps)(MovieCard);

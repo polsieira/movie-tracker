@@ -1,3 +1,5 @@
+import { postFavorite } from '../apiCalls'
+
 export const addMovies = movies => {
   return ({
     type: 'ADD_MOVIES',
@@ -43,3 +45,13 @@ export const getFavorites = faves => {
     faves
   })
 }
+
+export const addFavorite = async (id,favorite) => {
+  const posted = await postFavorite(id, favorite)//change API call to postFavorite
+  return ({
+    type: 'ADD_FAVORITE',
+    posted
+  })
+}
+
+

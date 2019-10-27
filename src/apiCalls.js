@@ -47,7 +47,7 @@ export const fetchFavorites = async (id) => {
   return data.favorites
 }
 
-export const addFavorite = async (id, faveInfo) => {
+export const postFavorite = async (id, faveInfo) => {
   const options = {
     method: 'POST',
     body: JSON.stringify(faveInfo),
