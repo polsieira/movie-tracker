@@ -44,14 +44,14 @@ class App extends Component {
 const mapStateToProps = ({ movies, errorMsg, isLoading }) => ({
   movies,
   errorMsg,
-  isLoading
+  isLoading,
 })
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addMovies,
     hasErrored,
-    isLoading
+    isLoading,
   }, dispatch)
 )
 

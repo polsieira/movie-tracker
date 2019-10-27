@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Form.scss';
 import { connect } from 'react-redux';
-import { loginUser, createUser} from '../../actions';
+import { loginUser, createUser, getFavorites} from '../../actions';
 import { Redirect } from 'react-router-dom';
-import { loginUserCheck, createUserCheck } from "../../apiCalls";
+import { loginUserCheck, createUserCheck, fetchFavorites } from "../../apiCalls";
 import { IoIosFilm } from 'react-icons/io';
 
 class LoginForm extends Component {
@@ -39,10 +39,14 @@ class LoginForm extends Component {
         isSignedIn: true
       })
       this.setState({ error: '' })
+      const favorites = await fetchFavorites(response.id)
+
+      console.log('favorites from form', favorites)
+      getFavorites(favorites)
     } else {
       this.setState({ error: response.error })
     }
-    console.log(response)
+    // console.log(response)
     this.clearInputs()
   }
 
@@ -155,13 +159,15 @@ class LoginForm extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => ({
-  user
+const mapStateToProps = ({ user, favorites }) => ({
+  user,
+  favorites
 })
 
 const mapDispatchToProps = dispatch => ({
   loginUser: userInfo => dispatch(loginUser(userInfo)),
-  createUser: userInfo => dispatch(createUser(userInfo))
+  createUser: userInfo => dispatch(createUser(userInfo)),
+  getFavorites: favorites => dispatch(getFavorites(favorites))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

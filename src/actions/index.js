@@ -36,3 +36,10 @@ export const createUser = ({ name, email, password }) => {
     password
   })
 }
+
+export const getFavorites = faves => {
+  return ({
+    type: 'GET_FAVORITES',
+    faves
+  })
+}

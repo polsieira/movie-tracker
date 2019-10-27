@@ -37,6 +37,16 @@ export const createUserCheck = async (userInfo) => {
   return data;
 }
 
+export const fetchFavorites = async (id) => {
+  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`)
+  if (!response.ok) {
+    throw new Error('There was an error retrieving your favorites')
+  }
+  const data = await response.json();
+  console.log('favorites from fetch', data.favorites)
+  return data.favorites
+}
+
 export const addFavorite = async (id, faveInfo) => {
   const options = {
     method: 'POST',
