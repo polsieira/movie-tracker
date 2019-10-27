@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieInfo.scss';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const MovieInfo = ({id, movies}) => {
   const movieId = parseInt(id.id)
@@ -11,6 +12,14 @@ const MovieInfo = ({id, movies}) => {
     return (
       <section>
         <div className='movie-info-div'>
+        <div className='movie-nav'>
+          <Link to='/'>
+            <button className='go-home' type='button'>Home</button>
+          </Link>
+          <Link to='/login'>
+            <button className='sign-in' type='button'>Sign In</button>
+          </Link>
+        </div>
           <figure className='movie-figure'>
             <figcaption>
               <h1 className='movie-title'>{`${title}(${date})`}</h1>
@@ -18,7 +27,8 @@ const MovieInfo = ({id, movies}) => {
             </figcaption>
             <img className='movie-backdrop' src={`https://image.tmdb.org/t/p/original${backdrop_path}`} alt='movie backdrop' />
           </figure>
-          <p>Overview: {overview}</p>
+          <p>Overview</p>
+          <p>{overview}</p>
         </div>
       </section>
     )
