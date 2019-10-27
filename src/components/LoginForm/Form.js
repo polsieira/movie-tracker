@@ -42,7 +42,7 @@ class LoginForm extends Component {
       const favorites = await fetchFavorites(response.id)
 
       console.log('favorites from form', favorites)
-      getFavorites(favorites)
+      this.props.getFavorites(favorites)
     } else {
       this.setState({ error: response.error })
     }

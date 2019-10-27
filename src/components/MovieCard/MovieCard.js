@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { addFavorite } from '../../actions'
 
 const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user }) => {
+  console.log('user', user)
   // console.log('user id', typeof this.state.id)
   const d = new Date(`${release_date}`);
   // const isFavorite = favorites.filter(favorite => favorite.includes(title))
@@ -43,13 +44,24 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
   )
 }
 
-const mapStateToProps = ({ user, favorites }) => ({
-  user,
-  favorites
-})
+// const mapStateToProps = (state) => (
+//   return ({
+//   user: state.user,
+//   favorites: state.favorites
+// })
+
+const mapStateToProps = (state) => {
+  console.log('user below', state)
+  return (
+    {
+      user: state.user,
+      favorites: state.favorites
+    }
+  )
+}
 
 const mapDispatchToProps = dispatch => ({
   addFavorite: (id,favorite) => dispatch(addFavorite(id, favorite))
 })
 
-export default connect(mapDispatchToProps,mapStateToProps)(MovieCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
