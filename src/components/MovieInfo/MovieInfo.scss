@@ -1,0 +1,29 @@
+.movie-info-div {
+  min-height: 100vh;
+}
+
+.movie-backdrop {
+  height: 600px;
+  width: 100%;
+}
+
+.movie-figure {
+  margin: 0px;
+}
+
+figcaption {
+  background-color: #1AAB8A;
+  color: #fff;
+  left: 30px;
+  padding: 5px;
+  position: absolute;
+  top: 500px;
+}
+
+.movie-title {
+  margin-top: 5px
+}
+
+.movie-average {
+  margin-bottom: 5px;
+}

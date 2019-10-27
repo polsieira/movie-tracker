@@ -10,15 +10,15 @@ const MovieInfo = ({id, movies}) => {
   const date = `${d.getFullYear()}`;
     return (
       <section>
-        <div>
+        <div className='movie-info-div'>
           <figure className='movie-figure'>
             <figcaption>
-              <h1>{`${title}(${date})`}</h1>
-              <p>{vote_average}</p>
+              <h1 className='movie-title'>{`${title}(${date})`}</h1>
+              <p className='movie-average'>Average Rating: {vote_average}</p>
             </figcaption>
             <img className='movie-backdrop' src={`https://image.tmdb.org/t/p/original${backdrop_path}`} alt='movie backdrop' />
           </figure>
-          <p>{overview}</p>
+          <p>Overview: {overview}</p>
         </div>
       </section>
     )
