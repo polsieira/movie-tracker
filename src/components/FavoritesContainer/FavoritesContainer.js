@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import './FavoritesContainer.scss';
 import NavigationBar from '../NavigationBar/NavigationBar';
 
-const MovieContainer = ({ movies }) => {
+const MovieContainer = ({ movies, user }) => {
   const favoritedMovies = movies.filter(movie => movie.isFavorite);
+
+  console.log(user)
 
   const displayMovies = favoritedMovies.map(movie => {
     return (
@@ -28,8 +30,9 @@ const MovieContainer = ({ movies }) => {
   )
 }
 
-const mapStateToProps = ({ movies }) => ({
-  movies
+const mapStateToProps = ({ movies, user }) => ({
+  movies,
+  user
 })
 
 export default connect(mapStateToProps)(MovieContainer)

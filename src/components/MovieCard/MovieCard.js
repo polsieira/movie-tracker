@@ -33,7 +33,7 @@ const MovieCard = ({ movie, id, title, release_date, poster_path, overview, isFa
   )
 }
 
-const mapPropsToState = ({ isFavorite, movies }) => ({
+const mapStateToProps = ({ isFavorite, movies }) => ({
   isFavorite,
   movies
 })
@@ -42,4 +42,4 @@ const mapDispatchToProps = dispatch => ({
   isFavorite: fav => dispatch(fav)
 })
 
-export default connect(mapPropsToState, mapDispatchToProps)(MovieCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
