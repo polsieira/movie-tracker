@@ -3,6 +3,7 @@ import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { isFavorite } from '../../actions';
 
 const MovieCard = ({ movie, id, title, release_date, poster_path, overview, isFavorite, movies }) => {
 
@@ -25,7 +26,8 @@ const MovieCard = ({ movie, id, title, release_date, poster_path, overview, isFa
     <button id={id} type='button' className='favorite-btn'><IoIosHeartEmpty className='favorite-heart' onClick={() => {
       movie.isFavorite = !movie.isFavorite;
       isFavorite = movies.filter(movie => movie.isFavorite)
-      console.log(isFavorite)
+      // console.log(isFavorite)
+      // isFavorite('IS_FAVORITE', !movie.isFavorite)
     }}/></button>
     </div>
   )
@@ -37,7 +39,7 @@ const mapPropsToState = ({ isFavorite, movies }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  isFavorite: isFavorite => dispatch(isFavorite)
+  isFavorite: fav => dispatch(fav)
 })
 
 export default connect(mapPropsToState, mapDispatchToProps)(MovieCard);
