@@ -3,7 +3,7 @@ import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
-const MovieCard = ({ id, title, release_date, poster_path, overview }) => {
+const MovieCard = ({ movie, id, title, release_date, poster_path, overview }) => {
 
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -19,9 +19,11 @@ const MovieCard = ({ id, title, release_date, poster_path, overview }) => {
           <h4 className='movie-release'>{date}</h4>
           <h4 className='movie-overview'>{overview}</h4>
         </div>
-        <button id={id} type='button' className='favorite-btn'><IoIosHeartEmpty className='favorite-heart' /></button>
       </div>
     </Link>
+    <button id={id} type='button' className='favorite-btn'><IoIosHeartEmpty className='favorite-heart' onClick={() => {
+      movie.isFavorite = !movie.isFavorite;
+    }}/></button>
     </div>
   )
 }

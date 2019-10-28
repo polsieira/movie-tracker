@@ -12,6 +12,7 @@ const MovieContainer = ({ movies, error }) => {
         {...movie}
         key={movie.id}
         id={movie.id}
+        movie={movie}
       />
     )
   })
