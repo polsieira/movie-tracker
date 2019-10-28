@@ -61,3 +61,11 @@ export const fetchAndPostFavorite = (id,favorite) => {
 }
 
 
+export const removeFavorite = (userId, movieId) => {
+  return ({
+    type: 'REMOVE_FAVORITE',
+    userId,
+    movieId
+  })
+}
+

@@ -4,6 +4,7 @@ export const getMovies = async () => {
     throw new Error('There was an error loading movies')
   }
   const data = await response.json();
+  data.results.map(result => result.isFavorite = false)
   return data.results;
 }
 
@@ -55,9 +56,19 @@ export const postFavorite = async (id, faveInfo) => {
       'Content-Type' : 'application/json'
     }
   }
-  console.log(id)
   const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
   const addedFavorite = await response.json();
   console.log('added favorite', addedFavorite)
   return addedFavorite
+}
+
+export const deleteFavorite = async (userId, faveId) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type' : 'application/json'
+    }
+  }
+
+  const response = await fetch(`http://localhost:3001/api/v1/users/${userId}/moviefavorites/${faveId}`)
 }

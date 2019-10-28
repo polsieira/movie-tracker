@@ -4,6 +4,8 @@ export const favorites = (state = [], action) => {
       return action.faves;
     case 'ADD_FAVORITE':
       return [...state, action.favorite]
+    case 'REMOVE_FAVORITE':
+        return [...state]
     default:
       return state
   }

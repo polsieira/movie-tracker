@@ -4,10 +4,10 @@ import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 // import { postFavorite } from '../../apiCalls'
-import { fetchAndPostFavorite } from '../../actions'
+import { fetchAndPostFavorite, removeFavorite } from '../../actions'
 
-const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user, addFavorite }) => {
-  console.log('user', user)
+const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, user, addFavorite, movie, removeFavorite, favorites }) => {
+  console.log('movie', movie)
   // console.log('user id', typeof this.state.id)
   const d = new Date(`${release_date}`);
   // const isFavorite = favorites.filter(favorite => favorite.includes(title))
@@ -29,14 +29,17 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
           id={id} 
           type='button' 
           className='favorite-btn'
-          onClick={() => addFavorite(user.id, {
-            movie_id: id,
-            title: title,
-            poster_path: poster_path,
-            release_date:release_date,
-            vote_average: vote_average,
-            overview:overview
-          })}
+          onClick={() => {
+            return favorites.forEach(favorite => {
+              id === favorite.movie_id ? removeFavorite(user.id, id) : addFavorite(user.id, {
+                movie_id: id,
+                title: title,
+                poster_path: poster_path,
+                release_date:release_date,
+                vote_average: vote_average,
+                overview:overview
+              })
+          })}}
         ><IoIosHeartEmpty className='favorite-heart' /></button>
       </div>
     </Link>
@@ -52,7 +55,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-  addFavorite: (id,favorite) => dispatch(fetchAndPostFavorite(id, favorite))
+  addFavorite: (id,favorite) => dispatch(fetchAndPostFavorite(id, favorite)),
+  removeFavorite: (userId, movieId) => dispatch(removeFavorite(userId, movieId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
