@@ -39,14 +39,6 @@ export const createUser = ({ name, email, password }) => {
   })
 }
 
-<<<<<<< HEAD
-export const isFavorite = bool => {
-  return ({
-    type: 'IS_FAVORITE',
-    bool
-  })
-}
-=======
 export const getFavorites = faves => {
   return ({
     type: 'GET_FAVORITES',
@@ -87,4 +79,3 @@ export const removeFavorite = (movieId) => {
   })
 }
 
->>>>>>> master

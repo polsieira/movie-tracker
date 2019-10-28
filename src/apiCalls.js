@@ -4,7 +4,7 @@ export const getMovies = async () => {
     throw new Error('There was an error loading movies')
   }
   const data = await response.json();
-  
+  data.results.map(result => result.isFavorite = false)
   return data.results;
 }
 
@@ -29,11 +29,48 @@ export const createUserCheck = async (userInfo) => {
     method: 'POST',
     body: JSON.stringify(userInfo),
     headers: {
-      'Content-Type' : 'application/json'
+      'Content-Type': 'application/json'
     }
   }
   const response = await fetch('http://localhost:3001/api/v1/users', options)
 
   const data = await response.json();
   return data;
+}
+
+export const fetchFavorites = async (id) => {
+  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`)
+  if (!response.ok) {
+    throw new Error('There was an error retrieving your favorites')
+  }
+  const data = await response.json();
+  console.log('favorites from fetch', data.favorites)
+  return data.favorites
+}
+
+export const postFavorite = async (id, faveInfo) => {
+  console.log('adding fav yo')
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(faveInfo),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  const response = await fetch(`http://localhost:3001/api/v1/users/${id}/moviefavorites`, options)
+  const addedFavorite = await response.json();
+  console.log('added favorite', addedFavorite)
+  return addedFavorite
+}
+
+export const deleteFavorite = async (userId, faveId) => {
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  const response = await fetch(`http://localhost:3001/api/v1/users/${userId}/moviefavorites/${faveId}`, options);
+  return response;
 }
