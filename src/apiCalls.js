@@ -4,7 +4,7 @@ export const getMovies = async () => {
     throw new Error('There was an error loading movies')
   }
   const data = await response.json();
-  data.results.map(result => result.isFavorite = false)
+  
   return data.results;
 }
 

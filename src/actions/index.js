@@ -1,3 +1,5 @@
+import { postFavorite, deleteFavorite } from '../apiCalls'
+
 export const addMovies = movies => {
   return ({
     type: 'ADD_MOVIES',
@@ -31,15 +33,58 @@ export const loginUser = ({ name, id, isSignedIn }) => {
 export const createUser = ({ name, email, password }) => {
   return ({
     type: 'CREATE_USER',
-    name, 
+    name,
     email,
     password
   })
 }
 
+<<<<<<< HEAD
 export const isFavorite = bool => {
   return ({
     type: 'IS_FAVORITE',
     bool
   })
 }
+=======
+export const getFavorites = faves => {
+  return ({
+    type: 'GET_FAVORITES',
+    faves
+  })
+}
+
+export const addFavorite = favorite => {
+  return ({
+    type: 'ADD_FAVORITE',
+    favorite
+  })
+}
+
+export const fetchAndPostFavorite = (id, favorite) => {
+  return (dispatch) => {
+    return postFavorite(id, favorite)
+      .then(result => dispatch(addFavorite(result)))
+  }
+}
+
+export const fetchAndDeleteFavorite = (id, favorite_id) => {
+  return (dispatch) => {
+    return deleteFavorite(id, favorite_id)
+      .then(result => {
+        console.log(result)
+        dispatch(removeFavorite(favorite_id))
+      })
+  }
+}
+
+
+export const removeFavorite = (movieId) => {
+  console.log(movieId)
+  return ({
+    type: 'REMOVE_FAVORITE',
+    movieId
+  })
+}
+
+>>>>>>> master

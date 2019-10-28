@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from '../../apiCalls';
 import './App.scss';
-import { addMovies, isLoading, hasErrored } from '../../actions';
+import { addMovies, isLoading, hasErrored, fetchAndDeleteFavorite, fetchAndPostFavorite, getFavorites } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import LoginForm from '../LoginForm/Form';
@@ -31,10 +31,26 @@ class App extends Component {
     }
   }
 
+  handleFavorite = (movie) => {
+    const { favorites, user, fetchAndPostFavorite, fetchAndDeleteFavorite, getFavorites } = this.props;
+    if (user.id) {
+      const isFavorited = favorites.find(favorite => {
+        return favorite.movie_id === movie.movie_id
+      });
+      if (isFavorited) {
+        fetchAndDeleteFavorite(user.id, movie.movie_id)
+      } else {
+        fetchAndPostFavorite(user.id, movie)
+      }
+    } else {
+      //some kind of bool that redirects
+    }
+  }
+
   render() {
     return (
       <div className='App'>
-        <Route exact path='/' render={() => <MovieContainer />} />
+        <Route exact path='/' render={() => <MovieContainer handleFavorite={this.handleFavorite} />} />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/movie/:id' render={({match}) => <MovieInfo id={match.params} />} />
         <Route exact path='/favorites' render={() => <FavoritesContainer />}/>
@@ -43,17 +59,22 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ movies, errorMsg, isLoading }) => ({
+const mapStateToProps = ({ movies, errorMsg, isLoading, user, favorites }) => ({
   movies,
   errorMsg,
-  isLoading
+  isLoading,
+  user,
+  favorites
 })
 
 export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addMovies,
     hasErrored,
-    isLoading
+    isLoading,
+    fetchAndDeleteFavorite,
+    fetchAndPostFavorite,
+    getFavorites
   }, dispatch)
 )
 
