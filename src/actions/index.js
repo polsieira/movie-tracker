@@ -36,3 +36,10 @@ export const createUser = ({ name, email, password }) => {
     password
   })
 }
+
+export const isFavorite = bool => {
+  return ({
+    type: 'IS_FAVORITE',
+    bool
+  })
+}
