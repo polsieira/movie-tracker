@@ -14,9 +14,14 @@ const NavigationBar = ({ isSignedIn, name, loginUser }) => {
       </form>
       <h1 className="heading">moooovies.</h1>
       {isSignedIn ? <p className='user'>{name}</p> : null}
-      <Link to='/login'>
-        {isSignedIn ? <button className='sign-out' type='button' onClick={() => loginUser({ name: '', id: '', isSignedIn: false })}>Sign Out</button> : <button className='sign-in' type='button' >Sign In</button>}
-      </Link>
+      <div className='login-fav'>
+        <Link to='/login'>
+          {isSignedIn ? <button className='sign-out' type='button' onClick={() => loginUser({ name: '', id: '', isSignedIn: false })}>Sign Out</button> : <button className='sign-in' type='button' >Sign In</button>}
+        </Link>
+        <Link to='/favorites'>
+          <button className='favorites-button' type='button'>Favorites</button>
+        </Link>
+      </div>
     </div>
   )
 }

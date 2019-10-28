@@ -8,6 +8,7 @@ import MovieInfo from '../MovieInfo/MovieInfo';
 import LoginForm from '../LoginForm/Form';
 import { Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
 
 class App extends Component {
   constructor() {
@@ -51,7 +52,8 @@ class App extends Component {
       <div className='App'>
         <Route exact path='/' render={() => <MovieContainer handleFavorite={this.handleFavorite} />} />
         <Route exact path='/login' render={() => <LoginForm />} />
-        <Route exact path='/movie/:id' render={({ match }) => <MovieInfo id={match.params} />} />
+        <Route exact path='/movie/:id' render={({match}) => <MovieInfo id={match.params} />} />
+        <Route exact path='/favorites' render={() => <FavoritesContainer />}/>
       </div>
     )
   }

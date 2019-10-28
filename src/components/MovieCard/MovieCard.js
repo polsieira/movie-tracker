@@ -21,24 +21,24 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
             <h4 className='movie-release'>{date}</h4>
             <h4 className='movie-overview'>{overview}</h4>
           </div>
-          <button
-            id={id}
-            type='button'
-            className='favorite-btn'
-            onClick={() => {
-              console.log('clicked')
-              handleFavorite({
-                movie_id: id,
-                title: title,
-                poster_path: poster_path,
-                release_date: release_date,
-                vote_average: vote_average,
-                overview: overview
-              })
-            }}
-          ><IoIosHeartEmpty className='favorite-heart' /></button>
         </div>
       </Link>
+      <button
+        id={id}
+        type='button'
+        className='favorite-btn'
+        onClick={() => {
+          console.log('clicked')
+          handleFavorite({
+            movie_id: id,
+            title: title,
+            poster_path: poster_path,
+            release_date: release_date,
+            vote_average: vote_average,
+            overview: overview
+          })
+        }}
+      ><IoIosHeartEmpty className='favorite-heart' /></button>
     </div>
   )
 }
@@ -47,8 +47,6 @@ const mapStateToProps = state => ({
   user: state.user,
   favorites: state.favorites
 })
-
-
 
 const mapDispatchToProps = dispatch => ({
   addFavorite: (id, favorite) => dispatch(fetchAndPostFavorite(id, favorite)),
