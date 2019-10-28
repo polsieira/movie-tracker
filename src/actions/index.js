@@ -1,4 +1,4 @@
-import { postFavorite } from '../apiCalls'
+import { postFavorite, deleteFavorite } from '../apiCalls'
 
 export const addMovies = movies => {
   return ({
@@ -33,7 +33,7 @@ export const loginUser = ({ name, id, isSignedIn }) => {
 export const createUser = ({ name, email, password }) => {
   return ({
     type: 'CREATE_USER',
-    name, 
+    name,
     email,
     password
   })
@@ -53,18 +53,28 @@ export const addFavorite = favorite => {
   })
 }
 
-export const fetchAndPostFavorite = (id,favorite) => {
+export const fetchAndPostFavorite = (id, favorite) => {
   return (dispatch) => {
     return postFavorite(id, favorite)
-      .then(result => dispatch(addFavorite(result)) )
-  } 
+      .then(result => dispatch(addFavorite(result)))
+  }
+}
+
+export const fetchAndDeleteFavorite = (id, favorite_id) => {
+  return (dispatch) => {
+    return deleteFavorite(id, favorite_id)
+      .then(result => {
+        console.log(result)
+        dispatch(removeFavorite(favorite_id))
+      })
+  }
 }
 
 
-export const removeFavorite = (userId, movieId) => {
+export const removeFavorite = (movieId) => {
+  console.log(movieId)
   return ({
     type: 'REMOVE_FAVORITE',
-    userId,
     movieId
   })
 }

@@ -4,15 +4,15 @@ import MovieCard from '../MovieCard/MovieCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
 
-const MovieContainer = ({ movies, errorMsg }) => {
+const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
   const displayMovies = movies.map(movie => {
-    console.log(movie)
     return (
       <MovieCard
         {...movie}
         key={movie.id}
         id={movie.id}
         movie={movie}
+        handleFavorite={handleFavorite}
       />
     )
   })
@@ -33,7 +33,5 @@ const mapStateToProps = ({ movies, errorMsg }) => ({
   movies,
   errorMsg
 });
-
-//this was just { error } but in the store it's called errorMsg?? 
 
 export default connect(mapStateToProps)(MovieContainer);
