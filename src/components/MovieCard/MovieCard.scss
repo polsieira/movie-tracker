@@ -3,18 +3,23 @@
   border: #cecece 1px solid;
   box-shadow: 2px 2px 2px 1px #e8e8e8;
   display: flex;
+  
+  .MovieCardLink {
+    display: flex;
+    text-decoration: none;
+  }
 
   .movie-poster {
     width: 200px;
   }
 
   .movie {
+    color: black;
     display: flex;
     flex-direction: column;
     float: right;
     justify-content: space-between;
     padding: 10px;
-    width: 100%;
 
     .movie-title {
       font-size: 28px;

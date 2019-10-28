@@ -12,7 +12,7 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
   return (
     <div className='MovieCard'>
-      <Link to={`/movie/${id}`}>
+      <Link to={`/movie/${id}`} className='MovieCardLink'>
         <img className='movie-poster' src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt='movie poster' />
         <div className='movie'>
           <div className='movie-info'>
