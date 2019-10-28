@@ -9,12 +9,12 @@
   }
 
   .movie {
+    color: black;
     display: flex;
     flex-direction: column;
     float: right;
     justify-content: space-between;
     padding: 10px;
-    width: 100%;
 
     .movie-title {
       font-size: 28px;

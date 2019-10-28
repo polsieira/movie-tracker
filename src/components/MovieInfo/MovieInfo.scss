@@ -1,0 +1,79 @@
+.movie-info-div {
+  min-height: 100vh;
+}
+
+.movie-nav {
+  background-color: #1AAB8A;
+  display: flex;
+  justify-content: space-between;
+  height: 110px;
+}
+
+.movie-backdrop {
+  height: 600px;
+  width: 100%;
+}
+
+.movie-figure {
+  display: flex;
+  margin: 0px;
+}
+
+figcaption {
+  background-color: #1AAB8A;
+  color: #fff;
+  left: 10px;
+  padding: 5px;
+  position: absolute;
+  top: 590px;
+}
+
+.movie-title {
+  margin-top: 5px
+}
+
+.movie-average {
+  margin-bottom: 5px;
+}
+
+.sign-in-movie,
+.go-home {
+  background:#1AAB8A;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  cursor: pointer;
+  height: 50px;
+  font-size: 1em;
+  outline: none;
+  margin: 30px 30px 0px 30px;
+  position: relative;
+  transition: 800ms ease all;
+  width: 110px;
+  &:hover{
+    background: #fff;
+    color: #C3403F;
+  }
+  &:before,
+  &:after {
+    background: #1AAB8A;
+    content: '';
+    height: 2px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: 400ms ease all;
+    width: 0;
+  }
+  &:after {
+    bottom: 0;
+    left: 0;
+    right: inherit;
+    top: inherit;
+  }
+  &:hover:before, 
+  &:hover:after {
+    transition: 800ms ease all;
+    width: 100%;
+  }
+}

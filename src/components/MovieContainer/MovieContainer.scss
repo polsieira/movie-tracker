@@ -1,7 +1,7 @@
 .MovieContainer {
   display: grid;
   gap: 20px;
-  height: 100vh;
+  min-height: 100vh;
   grid-template-columns: 1fr 1fr;
   padding: 150px 10%;
 }
