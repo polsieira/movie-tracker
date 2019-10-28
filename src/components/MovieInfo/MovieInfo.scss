@@ -6,7 +6,7 @@
   background-color: #1AAB8A;
   display: flex;
   justify-content: space-between;
-  height: 90px;
+  height: 110px;
 }
 
 .movie-backdrop {
@@ -15,6 +15,7 @@
 }
 
 .movie-figure {
+  display: flex;
   margin: 0px;
 }
 
@@ -45,7 +46,7 @@ figcaption {
   height: 50px;
   font-size: 1em;
   outline: none;
-  margin: 15px 30px 0px 30px;
+  margin: 30px 30px 0px 30px;
   position: relative;
   transition: 800ms ease all;
   &:hover{
