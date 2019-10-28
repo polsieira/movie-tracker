@@ -12,7 +12,8 @@ $color: #fff;
 }
 
 .sign-in,
-.sign-out {
+.sign-out,
+.favorites-button {
   background:#1AAB8A;
   border: none;
   border-radius: 2px;
@@ -50,6 +51,10 @@ $color: #fff;
     transition: 800ms ease all;
     width: 100%;
   }
+}
+
+.favorites-button {
+  width: 113px;
 }
 
 .sign-in {
