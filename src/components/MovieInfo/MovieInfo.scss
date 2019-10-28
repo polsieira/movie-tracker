@@ -36,7 +36,7 @@ figcaption {
   margin-bottom: 5px;
 }
 
-.sign-in,
+.sign-in-movie,
 .go-home {
   background:#1AAB8A;
   border: none;
@@ -49,6 +49,7 @@ figcaption {
   margin: 30px 30px 0px 30px;
   position: relative;
   transition: 800ms ease all;
+  width: 110px;
   &:hover{
     background: #fff;
     color: #C3403F;
@@ -75,8 +76,4 @@ figcaption {
     transition: 800ms ease all;
     width: 100%;
   }
-}
-
-.go-home {
-  width: 110px;
 }

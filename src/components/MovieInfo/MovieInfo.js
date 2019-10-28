@@ -17,7 +17,7 @@ const MovieInfo = ({id, movies}) => {
             <button className='go-home' type='button'>Home</button>
           </Link>
           <Link to='/login'>
-            <button className='sign-in' type='button'>Sign In</button>
+            <button className='sign-in-movie' type='button'>Sign In</button>
           </Link>
         </div>
           <figure className='movie-figure'>
