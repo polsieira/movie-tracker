@@ -4,14 +4,15 @@ import MovieCard from '../MovieCard/MovieCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
 
-const MovieContainer = ({ movies, error }) => {
+const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
   const displayMovies = movies.map(movie => {
-    console.log(movie)
     return (
       <MovieCard
         {...movie}
         key={movie.id}
         id={movie.id}
+        movie={movie}
+        handleFavorite={handleFavorite}
       />
     )
   })
@@ -19,7 +20,7 @@ const MovieContainer = ({ movies, error }) => {
   return (
     <>
       <NavigationBar />
-      {error && <p className='errorMsg'>Unable to load movies. We hate movies. Go to IMDB.</p>}
+      {errorMsg && <p className='errorMsg'>Unable to load movies. We hate movies. Go to IMDB.</p>}
       <div className='MovieContainer'>
         {displayMovies}
       </div>
@@ -28,9 +29,9 @@ const MovieContainer = ({ movies, error }) => {
 
 }
 
-const mapStateToProps = ({ movies, error }) => ({
-  movies: movies,
-  error
+const mapStateToProps = ({ movies, errorMsg }) => ({
+  movies,
+  errorMsg
 });
 
 export default connect(mapStateToProps)(MovieContainer);
