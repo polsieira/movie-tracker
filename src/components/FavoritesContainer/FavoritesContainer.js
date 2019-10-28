@@ -2,6 +2,7 @@ import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import './FavoritesContainer.scss';
+import NavigationBar from '../NavigationBar/NavigationBar';
 
 const MovieContainer = ({ movies }) => {
   const favoritedMovies = movies.filter(movie => movie.isFavorite);
@@ -19,7 +20,10 @@ const MovieContainer = ({ movies }) => {
 
   return (
     <section className='favorites-container'>
-      {displayMovies}
+      <NavigationBar />
+      <div className='favorites'>
+        {displayMovies}
+      </div>
     </section>
   )
 }

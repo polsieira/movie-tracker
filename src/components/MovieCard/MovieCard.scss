@@ -52,4 +52,7 @@
 .favorite-btn {
   border: none;
   text-align: right;
+    &:focus {
+      outline: none;
+    }
 }
