@@ -2,8 +2,9 @@ import './MovieCard.scss';
 import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-const MovieCard = ({ movie, id, title, release_date, poster_path, overview }) => {
+const MovieCard = ({ movie, id, title, release_date, poster_path, overview, isFavorite, movies }) => {
 
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -23,9 +24,20 @@ const MovieCard = ({ movie, id, title, release_date, poster_path, overview }) =>
     </Link>
     <button id={id} type='button' className='favorite-btn'><IoIosHeartEmpty className='favorite-heart' onClick={() => {
       movie.isFavorite = !movie.isFavorite;
+      isFavorite = movies.filter(movie => movie.isFavorite)
+      console.log(isFavorite)
     }}/></button>
     </div>
   )
 }
 
-export default MovieCard;
+const mapPropsToState = ({ isFavorite, movies }) => ({
+  isFavorite,
+  movies
+})
+
+const mapDispatchToProps = dispatch => ({
+  isFavorite: isFavorite => dispatch(isFavorite)
+})
+
+export default connect(mapPropsToState, mapDispatchToProps)(MovieCard);

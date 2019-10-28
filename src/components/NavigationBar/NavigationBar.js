@@ -17,6 +17,9 @@ const NavigationBar = ({ isSignedIn, name, loginUser }) => {
       <Link to='/login'>
         {isSignedIn ? <button className='sign-out' type='button' onClick={() => loginUser({ name: '', id: '', isSignedIn: false })}>Sign Out</button> : <button className='sign-in' type='button' >Sign In</button>}
       </Link>
+      <Link to='/favorites'>
+        <button type='button'>Favorites</button>
+      </Link>
     </div>
   )
 }
