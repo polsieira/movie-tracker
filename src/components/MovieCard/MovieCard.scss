@@ -4,6 +4,18 @@
   box-shadow: 2px 2px 2px 1px #e8e8e8;
   display: flex;
 
+  .MovieCardLink {
+    color: black;
+    display: flex;
+    text-decoration: none;
+
+    .MovieCardLink:visited,
+    .MovieCardLink:hover,
+    .MovieCardLink:active {
+      color: black
+    }
+  }
+
   .movie-poster {
     width: 200px;
   }
