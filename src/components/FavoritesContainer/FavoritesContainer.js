@@ -8,8 +8,6 @@ import PropTypes from 'prop-types'
 const MovieContainer = ({ movies, user }) => {
   const favoritedMovies = movies.filter(movie => movie.isFavorite);
 
-  console.log(user)
-
   const displayMovies = favoritedMovies.map(movie => {
     return (
       <MovieCard

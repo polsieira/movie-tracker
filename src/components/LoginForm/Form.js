@@ -32,7 +32,6 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password,
     });
-    console.log(response)
     if (response.id) {
       this.props.loginUser({
         name: response.name,
@@ -41,13 +40,10 @@ class LoginForm extends Component {
       })
       this.setState({ error: '' })
       const favorites = await fetchFavorites(response.id)
-
-      console.log('favorites from form', favorites)
       this.props.getFavorites(favorites)
     } else {
       this.setState({ error: response.error })
     }
-    // console.log(response)
     this.clearInputs()
   }
 
@@ -76,7 +72,6 @@ class LoginForm extends Component {
     } else if(response.error.constraint === 'email') {
       this.setState({ error: 'User already exists' })
     }
-    console.log(response)
     this.clearInputs()
   }
 
