@@ -93,5 +93,6 @@ App.propTypes = {
   errorMsg: PropTypes.string,
   isLoading: PropTypes.string,
   user: PropTypes.object,
-  favorites: PropTypes.array
+  favorites: PropTypes.array,
+  handleFavorite: PropTypes.func
 }
