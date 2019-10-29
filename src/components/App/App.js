@@ -39,9 +39,6 @@ class App extends Component {
 
   handleFavorite = (movie) => {
     const { favorites, user, fetchAndPostFavorite, fetchAndDeleteFavorite, getFavorites } = this.props;
-    // if (!user.id) {
-    //   return 'Please sign in to favorite'
-    // }
     if (user.id) {
       const isFavorited = favorites.find(favorite => {
         return favorite.movie_id === movie.movie_id
@@ -51,8 +48,6 @@ class App extends Component {
       } else {
         fetchAndPostFavorite(user.id, movie)
       }
-    } else {
-      // return <Redirect to = '/login' />//some kind of bool that redirects
     }
   }
 
