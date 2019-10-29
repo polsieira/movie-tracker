@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './FavoritesContainer.scss';
 import { Link } from 'react-router-dom';
 
-const MovieContainer = ({ handleFavorite, favorites, user }) => {
+const MovieContainer = ({ handleFavorite, favorites, user, checkFavorites }) => {
   const displayMovies = favorites.map(movie => {
     return (
       <MovieCard
@@ -13,6 +13,7 @@ const MovieContainer = ({ handleFavorite, favorites, user }) => {
         id={movie.id}
         movie={movie}
         handleFavorite={handleFavorite}
+        checkFavorites={checkFavorites}
       />
     )
   })
@@ -31,7 +32,7 @@ const MovieContainer = ({ handleFavorite, favorites, user }) => {
       </Link>
       </div>
       <div className='favorites'>
-        {user.isSignedIn && displayMovies}
+        {user.isSignedIn && displayMovies.length !== 0 ? displayMovies : <div className='fav-prompt'>You don't have any favorites yet!</div> }
         {!user.isSignedIn && <div className='fav-prompt'>Please Sign In To Add Favorites!</div>}
       </div>
     </section>
