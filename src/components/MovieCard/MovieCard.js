@@ -1,15 +1,20 @@
 import './MovieCard.scss';
 import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
+import { IoMdHeartDislike } from 'react-icons/io'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchAndPostFavorite, fetchAndDeleteFavorite } from '../../actions'
 import PropTypes from 'prop-types'
 
-const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, movie, handleFavorite }) => {
+const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite, checkFavorites, user }) => {
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  const favoriteBtn = <IoIosHeartEmpty className='favorite-heart' />
+  const removeFavoriteBtn = <IoMdHeartDislike className='favorite-heart' />
+
+  const faveHandler = checkFavorites(id) ? removeFavoriteBtn : favoriteBtn
   return (
     <div className='MovieCard'>
       <Link to={`/movie/${id}`} className='MovieCardLink'>
@@ -23,7 +28,7 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
           </div>
         </div>
       </Link>
-      <button
+      {user.isSignedIn ? <button
         id={id}
         type='button'
         className='favorite-btn'
@@ -37,7 +42,10 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
             overview: overview
           })
         }}
-      ><IoIosHeartEmpty className='favorite-heart' /></button>
+      >{faveHandler}</button> : <Link to='/login'><button
+      id={id}
+      type='button'
+      className='favorite-btn'>{favoriteBtn}</button></Link>}
     </div>
   )
 }
