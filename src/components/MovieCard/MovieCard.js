@@ -3,8 +3,8 @@ import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-// import { postFavorite } from '../../apiCalls'
 import { fetchAndPostFavorite, fetchAndDeleteFavorite } from '../../actions'
+import PropTypes from 'prop-types'
 
 const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, movie, handleFavorite }) => {
   const d = new Date(`${release_date}`);
@@ -54,3 +54,17 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+
+MovieCard.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  poster_path: PropTypes.string,
+  overview: PropTypes.string,
+  vote_average: PropTypes.number,
+  handleFavorite: PropTypes.func,
+  user: PropTypes.object,
+  favorites: PropTypes.array,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
+}

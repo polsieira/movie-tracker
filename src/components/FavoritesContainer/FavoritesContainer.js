@@ -3,6 +3,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import './FavoritesContainer.scss';
 import NavigationBar from '../NavigationBar/NavigationBar';
+import PropTypes from 'prop-types'
 
 const MovieContainer = ({ movies, user }) => {
   const favoritedMovies = movies.filter(movie => movie.isFavorite);
@@ -36,3 +37,4 @@ const mapStateToProps = ({ movies, user }) => ({
 })
 
 export default connect(mapStateToProps)(MovieContainer)
+
