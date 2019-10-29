@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieInfo MovieInfo component should match a snapshot 1`] = `
+<section>
+  <div
+    className="movie-info-full"
+  >
+    <div
+      className="movie-nav"
+    >
+      <Link
+        to="/"
+      >
+        <button
+          className="go-home"
+          type="button"
+        >
+          Home
+        </button>
+      </Link>
+      <Link
+        to="/login"
+      >
+        <button
+          className="sign-in-movie"
+          type="button"
+        >
+          Sign In
+        </button>
+      </Link>
+    </div>
+    <figure
+      className="movie-figure"
+    >
+      <figcaption>
+        <h1
+          className="movie-info-header"
+        >
+          Wicked(2016)
+        </h1>
+        <p
+          className="movie-info-vote"
+        >
+          6.5
+        </p>
+      </figcaption>
+      <img
+        alt="movie backdrop"
+        className="movie-backdrop"
+        src="https://image.tmdb.org/t/p/originalhttp://pic.pic"
+      />
+    </figure>
+    <p
+      className="movie-info-overview"
+    >
+      Blah
+    </p>
+  </div>
+</section>
+`;

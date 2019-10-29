@@ -7,7 +7,11 @@ import { connect } from 'react-redux'
 import { fetchAndPostFavorite, fetchAndDeleteFavorite } from '../../actions'
 import PropTypes from 'prop-types'
 
+<<<<<<< HEAD
 const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite, checkFavorites, user }) => {
+=======
+export const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite }) => {
+>>>>>>> testing
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
@@ -50,11 +54,12 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
   )
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   user: state.user,
   favorites: state.favorites
 })
 
+<<<<<<< HEAD
 const mapDispatchToProps = dispatch => ({
   addFavorite: (id, favorite) => dispatch(fetchAndPostFavorite(id, favorite)),
   removeFavorite: (userId, movieId) => dispatch(fetchAndDeleteFavorite(userId, movieId))
@@ -75,3 +80,6 @@ MovieCard.propTypes = {
   addFavorite: PropTypes.func,
   removeFavorite: PropTypes.func
 }
+=======
+export default connect(mapStateToProps)(MovieCard);
+>>>>>>> testing
