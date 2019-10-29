@@ -21,19 +21,18 @@ const MovieContainer = ({ handleFavorite, favorites, user, checkFavorites }) => 
   return (
     <section className='favorites-container'>
       <div className='nav-buttons'>
-      {user.isSignedIn && <Link to='/login'>
-        <button className='sign-in-movie' type='button'>Sign Out</button>
-      </Link>}
-      {!user.isSignedIn && <Link to='/login'>
-        <button className='sign-in-movie' type='button'>Sign In</button>
-      </Link>}
-      <Link to='/'>
-        <button className='go-home' type='button'>Home</button>
-      </Link>
+        {user.isSignedIn && <Link to='/login'>
+          <button className='sign-in-movie' type='button'>Sign Out</button>
+        </Link>}
+        {!user.isSignedIn && <Link to='/login'>
+          <button className='sign-in-movie' type='button'>Sign In</button>
+        </Link>}
+        <Link to='/'>
+          <button className='go-home' type='button'>Home</button>
+        </Link>
       </div>
       <div className='favorites'>
-        {user.isSignedIn && displayMovies.length !== 0 ? displayMovies : <div className='fav-prompt'>You don't have any favorites yet!</div> }
-        {!user.isSignedIn && <div className='fav-prompt'>Please Sign In To Add Favorites!</div>}
+        {user.isSignedIn && displayMovies.length !== 0 ? displayMovies : !user.isSignedIn ? <div className='fav-prompt'>Please Sign In To Add Favorites!</div> : <div className='fav-prompt'>You don't have any favorites yet!</div>}
       </div>
     </section>
   )
@@ -41,7 +40,7 @@ const MovieContainer = ({ handleFavorite, favorites, user, checkFavorites }) => 
 
 const mapStateToProps = ({ favorites, user }) => ({
   favorites,
-  user 
+  user
 })
 
 export default connect(mapStateToProps)(MovieContainer)
