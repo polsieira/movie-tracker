@@ -2,7 +2,25 @@
   display: grid;
   grid-gap: 20px;
   gap: 20px;
-  min-height: 100vh;
   grid-template-columns: 1fr 1fr;
   padding: 150px 10%;
+}
+
+.favorites-container {
+  min-height: 100vh;
+}
+
+.nav-buttons {
+  background-color: #1AAB8A;
+  display: flex;
+  height: 110px;
+  justify-content: space-between;
+  order: -1;
+  position: fixed;
+  width: 100%;
+}
+
+.fav-prompt {
+  font-size: 2em;
+  text-align: center;
 }

@@ -14,7 +14,9 @@ section {
   margin: 0;
 }
 
-.movie-info-full:after {
+
+// This style at the moment is keeping the buttons from ever being active. If it is changed to a different container, the styles look worse but the buttons function.
+.movie-figure:after {
   content: "";
   position: absolute;
   display: block;
@@ -40,12 +42,11 @@ figcaption {
   box-sizing: border-box;
 }
 
-.movie-info-header {
-
-}
-
-.movie-info-vote {
-
+.movie-nav {
+  background-color: #1AAB8A;
+  display: flex;
+  height: 113px;
+  justify-content: space-between;
 }
 
 .movie-backdrop {
