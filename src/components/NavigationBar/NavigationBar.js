@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
 import PropTypes from 'prop-types'
 
-const NavigationBar = ({ isSignedIn, name, loginUser }) => {
+export const NavigationBar = ({ isSignedIn, name, loginUser }) => {
 
   return (
     <div className='NavigationBar'>
@@ -27,12 +27,12 @@ const NavigationBar = ({ isSignedIn, name, loginUser }) => {
   )
 }
 
-const mapStateToProps = ({ user }) => ({
+export const mapStateToProps = ({ user }) => ({
   isSignedIn: user.isSignedIn,
   name: user.name
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   loginUser: userInfo => dispatch(loginUser(userInfo))
 })
 

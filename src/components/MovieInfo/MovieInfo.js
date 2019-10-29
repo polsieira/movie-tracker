@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types'
 
-const MovieInfo = ({ id, movies }) => {
+export const MovieInfo = ({ id, movies }) => {
   const movieId = parseInt(id.id)
   const selectedMovie = movies.find(movie => movie.id === movieId)
   const { title, release_date, vote_average, overview, backdrop_path } = selectedMovie
@@ -34,7 +34,7 @@ const MovieInfo = ({ id, movies }) => {
   )
 }
 
-const mapStateToProps = ({ movies }) => ({
+export const mapStateToProps = ({ movies }) => ({
   movies
 })
 

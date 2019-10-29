@@ -5,6 +5,9 @@ import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
 
+
+export const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
+
 const MovieContainer = ({ movies, errorMsg, handleFavorite, checkFavorites }) => {
   const displayMovies = movies.map(movie => {
     return (
@@ -32,7 +35,7 @@ const MovieContainer = ({ movies, errorMsg, handleFavorite, checkFavorites }) =>
 
 }
 
-const mapStateToProps = ({ movies, errorMsg }) => ({
+export const mapStateToProps = ({ movies, errorMsg }) => ({
   movies,
   errorMsg
 });
