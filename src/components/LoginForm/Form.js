@@ -6,6 +6,7 @@ import { loginUser, createUser, getFavorites} from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { loginUserCheck, createUserCheck, fetchFavorites } from "../../apiCalls";
 import { IoIosFilm } from 'react-icons/io';
+import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
   constructor() {
@@ -171,3 +172,23 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  handleChange: PropTypes.func,
+  handleClick: PropTypes.func,
+  clearInputs: PropTypes.func,
+  handleCreateUser: PropTypes.func,
+  email: PropTypes.string,
+  password: PropTypes.string,
+  error: PropTypes.string,
+  showModal: PropTypes.bool,
+  name: PropTypes.string,
+  newEmail: PropTypes.string,
+  newPassword: PropTypes.string,
+  user: PropTypes.object,
+  favorites: PropTypes.array,
+  loginUser: PropTypes.func,
+  createUser: PropTypes.func,
+  getFavorites: PropTypes.func
+
+}
