@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from '../../apiCalls';
 import './App.scss';
-import { addMovies, isLoading, hasErrored, fetchAndDeleteFavorite, fetchAndPostFavorite, getFavorites } from '../../actions';
+import { addMovies, checkIsLoading, hasErrored, fetchAndDeleteFavorite, fetchAndPostFavorite, getFavorites } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import LoginForm from '../LoginForm/Form';
 import { Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
+import PropTypes from 'prop-types'
 
 class App extends Component {
   constructor() {
@@ -21,12 +22,12 @@ class App extends Component {
   async componentDidMount() {
     const { addMovies, isLoading, hasErrored } = this.props;
     try {
-      isLoading(true);
+      checkIsLoading(true);
       const movieData = await getMovies();
-      isLoading(false);
+      checkIsLoading(false);
       addMovies(movieData);
     } catch (error) {
-      isLoading(false);
+      checkIsLoading(false);
       hasErrored(error.message);
     }
   }
@@ -71,7 +72,7 @@ export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addMovies,
     hasErrored,
-    isLoading,
+    checkIsLoading,
     fetchAndDeleteFavorite,
     fetchAndPostFavorite,
     getFavorites
@@ -80,3 +81,17 @@ export const mapDispatchToProps = dispatch => (
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  addMovies: PropTypes.func,
+  hasErrored: PropTypes.func,
+  checkIsLoading: PropTypes.func,
+  fetchAndDeleteFavorite: PropTypes.func,
+  fetchAndPostFavorite: PropTypes.func,
+  getFavorites: PropTypes.func,
+  movies: PropTypes.array,
+  errorMsg: PropTypes.string,
+  isLoading: PropTypes.string,
+  user: PropTypes.object,
+  favorites: PropTypes.array
+}

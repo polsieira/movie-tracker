@@ -14,9 +14,9 @@ export const hasErrored = message => {
   })
 }
 
-export const isLoading = bool => {
+export const checkIsLoading = bool => {
   return ({
-    type: 'IS_LOADING',
+    type: 'CHECK_IS_LOADING',
     bool
   })
 }
