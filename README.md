@@ -46,12 +46,6 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 ```
 
-### Run in GitHub Pages
-
-[Click here](https://polsieira.github.io/movie-tracker/)
-
----
-
 ### Built with:
 
 * HTML5
@@ -66,8 +60,11 @@ To create a production build, use npm run build.
 
 ## Screenshots
 
+<img width="1440" alt="Screen Shot 2019-10-29 at 4 23 58 PM" src="https://user-images.githubusercontent.com/25589695/67814082-13c40880-fa9b-11e9-9f9a-ff70ff2c6b11.png">
 
-## User Instruction
+<img width="1120" alt="Screen Shot 2019-10-29 at 4 26 56 PM" src="https://user-images.githubusercontent.com/25589695/67814162-43731080-fa9b-11e9-819c-d073a73c36b4.png">
+
+<img width="1120" alt="Screen Shot 2019-10-29 at 4 27 51 PM" src="https://user-images.githubusercontent.com/25589695/67814195-5e458500-fa9b-11e9-9610-545446100979.png">
 
 
 ## Authors
