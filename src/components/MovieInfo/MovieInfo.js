@@ -17,9 +17,6 @@ export const MovieInfo = ({ id, movies }) => {
           <Link to='/'>
             <button className='go-home' type='button'>Home</button>
           </Link>
-          <Link to='/login'>
-            <button className='sign-in-movie' type='button'>Sign In</button>
-          </Link>
         </div>
         <figure className='movie-figure'>
           <figcaption>
