@@ -49,7 +49,7 @@ class App extends Component {
         fetchAndPostFavorite(user.id, movie)
       }
     } else {
-      //some kind of bool that redirects
+      // return <Redirect to = '/login' />//some kind of bool that redirects
     }
   }
 
