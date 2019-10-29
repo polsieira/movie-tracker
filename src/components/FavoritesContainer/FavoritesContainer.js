@@ -5,7 +5,6 @@ import './FavoritesContainer.scss';
 import { Link } from 'react-router-dom';
 
 const MovieContainer = ({ handleFavorite, favorites, user }) => {
-  console.log(user)
   const displayMovies = favorites.map(movie => {
     return (
       <MovieCard
