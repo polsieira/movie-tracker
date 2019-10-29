@@ -3,6 +3,7 @@ import './MovieContainer.scss';
 import MovieCard from '../MovieCard/MovieCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
 const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
   const displayMovies = movies.map(movie => {
@@ -35,3 +36,9 @@ const mapStateToProps = ({ movies, errorMsg }) => ({
 });
 
 export default connect(mapStateToProps)(MovieContainer);
+
+MovieContainer.propTypes = {
+  movies: PropTypes.array,
+  errorMsg: PropTypes.string,
+  handleFavorite: PropTypes.func
+}

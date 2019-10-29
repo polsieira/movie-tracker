@@ -45,3 +45,4 @@ const mapStateToProps = ({ favorites, user }) => ({
 })
 
 export default connect(mapStateToProps)(MovieContainer)
+
