@@ -14,17 +14,19 @@ section {
   margin: 0;
 }
 
-// .movie-info-full:after {
-//   content: "";
-//   position: absolute;
-//   display: block;
-//   left: 0;
-//   top: 0;
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.6) 100%) repeat 0 0;
-//   z-index: 1;
-// }
+
+// This style at the moment is keeping the buttons from ever being active. If it is changed to a different container, the styles look worse but the buttons function.
+.movie-figure:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 0px, rgba(0, 0, 0, 0.6) 100%) repeat 0 0;
+  z-index: 1;
+}
 
 figcaption {
   display: block;
@@ -40,12 +42,11 @@ figcaption {
   box-sizing: border-box;
 }
 
-.movie-info-header {
-
-}
-
-.movie-info-vote {
-
+.movie-nav {
+  background-color: #1AAB8A;
+  display: flex;
+  height: 113px;
+  justify-content: space-between;
 }
 
 .movie-backdrop {
