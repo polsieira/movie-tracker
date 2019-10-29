@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getMovies } from '../../apiCalls';
 import './App.scss';
-import { addMovies, isLoading, hasErrored, fetchAndDeleteFavorite, fetchAndPostFavorite, getFavorites } from '../../actions';
+import { addMovies, checkIsLoading, hasErrored, fetchAndDeleteFavorite, fetchAndPostFavorite, getFavorites } from '../../actions';
 import MovieContainer from '../MovieContainer/MovieContainer';
 import MovieInfo from '../MovieInfo/MovieInfo';
 import LoginForm from '../LoginForm/Form';
 import { Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import FavoritesContainer from '../FavoritesContainer/FavoritesContainer';
+import PropTypes from 'prop-types'
 
 class App extends Component {
   constructor() {
@@ -21,14 +22,20 @@ class App extends Component {
   async componentDidMount() {
     const { addMovies, isLoading, hasErrored } = this.props;
     try {
-      isLoading(true);
+      checkIsLoading(true);
       const movieData = await getMovies();
-      isLoading(false);
+      checkIsLoading(false);
       addMovies(movieData);
     } catch (error) {
-      isLoading(false);
+      checkIsLoading(false);
       hasErrored(error.message);
     }
+  }
+
+  checkFavorites = (movieId) => {
+    const { favorites } = this.props
+    let favorited = favorites.map(favorite => favorite.movie_id)
+    return favorited.includes(movieId)
   }
 
   handleFavorite = (movie) => {
@@ -42,18 +49,16 @@ class App extends Component {
       } else {
         fetchAndPostFavorite(user.id, movie)
       }
-    } else {
-      //some kind of bool that redirects
     }
   }
 
   render() {
     return (
       <div className='App'>
-        <Route exact path='/' render={() => <MovieContainer handleFavorite={this.handleFavorite} />} />
+        <Route exact path='/' render={() => <MovieContainer handleFavorite={this.handleFavorite} checkFavorites={this.checkFavorites} />} />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/movie/:id' render={({match}) => <MovieInfo id={match.params} />} />
-        <Route exact path='/favorites' render={() => <FavoritesContainer />}/>
+        <Route exact path='/favorites' render={() => <FavoritesContainer handleFavorite={this.handleFavorite} />}/>
       </div>
     )
   }
@@ -71,7 +76,7 @@ export const mapDispatchToProps = dispatch => (
   bindActionCreators({
     addMovies,
     hasErrored,
-    isLoading,
+    checkIsLoading,
     fetchAndDeleteFavorite,
     fetchAndPostFavorite,
     getFavorites
@@ -80,3 +85,18 @@ export const mapDispatchToProps = dispatch => (
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+App.propTypes = {
+  addMovies: PropTypes.func,
+  hasErrored: PropTypes.func,
+  checkIsLoading: PropTypes.func,
+  fetchAndDeleteFavorite: PropTypes.func,
+  fetchAndPostFavorite: PropTypes.func,
+  getFavorites: PropTypes.func,
+  movies: PropTypes.array,
+  errorMsg: PropTypes.string,
+  isLoading: PropTypes.string,
+  user: PropTypes.object,
+  favorites: PropTypes.array,
+  handleFavorite: PropTypes.func
+}

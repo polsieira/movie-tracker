@@ -14,9 +14,9 @@ export const hasErrored = message => {
   })
 }
 
-export const isLoading = bool => {
+export const checkIsLoading = bool => {
   return ({
-    type: 'IS_LOADING',
+    type: 'CHECK_IS_LOADING',
     bool
   })
 }
@@ -64,7 +64,6 @@ export const fetchAndDeleteFavorite = (id, favorite_id) => {
   return (dispatch) => {
     return deleteFavorite(id, favorite_id)
       .then(result => {
-        console.log(result)
         dispatch(removeFavorite(favorite_id))
       })
   }

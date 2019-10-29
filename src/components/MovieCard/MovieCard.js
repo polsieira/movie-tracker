@@ -1,14 +1,21 @@
 import './MovieCard.scss';
 import React from 'react';
 import { IoIosHeartEmpty } from 'react-icons/io';
+import { IoMdHeartDislike } from 'react-icons/io'
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { fetchAndPostFavorite, fetchAndDeleteFavorite } from '../../actions'
+import PropTypes from 'prop-types'
+
 
 export const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite }) => {
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+  const favoriteBtn = <IoIosHeartEmpty className='favorite-heart' />
+  const removeFavoriteBtn = <IoMdHeartDislike className='favorite-heart' />
+
+  const faveHandler = checkFavorites(id) ? removeFavoriteBtn : favoriteBtn
   return (
     <div className='MovieCard'>
       <Link to={`/movie/${id}`} className='MovieCardLink'>
@@ -22,7 +29,7 @@ export const MovieCard = ({ id, title, release_date, poster_path, overview, vote
           </div>
         </div>
       </Link>
-      <button
+      {user.isSignedIn ? <button
         id={id}
         type='button'
         className='favorite-btn'
@@ -36,7 +43,10 @@ export const MovieCard = ({ id, title, release_date, poster_path, overview, vote
             overview: overview
           })
         }}
-      ><IoIosHeartEmpty className='favorite-heart' /></button>
+      >{faveHandler}</button> : <Link to='/login'><button
+      id={id}
+      type='button'
+      className='favorite-btn'>{favoriteBtn}</button></Link>}
     </div>
   )
 }
@@ -46,4 +56,27 @@ export const mapStateToProps = state => ({
   favorites: state.favorites
 })
 
+
 export default connect(mapStateToProps)(MovieCard);
+
+const mapDispatchToProps = dispatch => ({
+  addFavorite: (id, favorite) => dispatch(fetchAndPostFavorite(id, favorite)),
+  removeFavorite: (userId, movieId) => dispatch(fetchAndDeleteFavorite(userId, movieId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCard);
+
+MovieCard.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  release_date: PropTypes.string,
+  poster_path: PropTypes.string,
+  overview: PropTypes.string,
+  vote_average: PropTypes.number,
+  handleFavorite: PropTypes.func,
+  user: PropTypes.object,
+  favorites: PropTypes.array,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
+}
+

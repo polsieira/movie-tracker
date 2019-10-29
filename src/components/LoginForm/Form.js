@@ -6,6 +6,7 @@ import { loginUser, createUser, getFavorites} from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { loginUserCheck, createUserCheck, fetchFavorites } from "../../apiCalls";
 import { IoIosFilm } from 'react-icons/io';
+import PropTypes from 'prop-types';
 
 class LoginForm extends Component {
   constructor() {
@@ -31,7 +32,6 @@ class LoginForm extends Component {
       email: this.state.email,
       password: this.state.password,
     });
-    console.log(response)
     if (response.id) {
       this.props.loginUser({
         name: response.name,
@@ -40,13 +40,10 @@ class LoginForm extends Component {
       })
       this.setState({ error: '' })
       const favorites = await fetchFavorites(response.id)
-
-      console.log('favorites from form', favorites)
       this.props.getFavorites(favorites)
     } else {
       this.setState({ error: response.error })
     }
-    // console.log(response)
     this.clearInputs()
   }
 
@@ -75,7 +72,6 @@ class LoginForm extends Component {
     } else if(response.error.constraint === 'email') {
       this.setState({ error: 'User already exists' })
     }
-    console.log(response)
     this.clearInputs()
   }
 
@@ -171,3 +167,23 @@ const mapDispatchToProps = dispatch => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+
+LoginForm.propTypes = {
+  handleChange: PropTypes.func,
+  handleClick: PropTypes.func,
+  clearInputs: PropTypes.func,
+  handleCreateUser: PropTypes.func,
+  email: PropTypes.string,
+  password: PropTypes.string,
+  error: PropTypes.string,
+  showModal: PropTypes.bool,
+  name: PropTypes.string,
+  newEmail: PropTypes.string,
+  newPassword: PropTypes.string,
+  user: PropTypes.object,
+  favorites: PropTypes.array,
+  loginUser: PropTypes.func,
+  createUser: PropTypes.func,
+  getFavorites: PropTypes.func
+
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import './MovieInfo.scss';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 export const MovieInfo = ({ id, movies }) => {
   const movieId = parseInt(id.id)
@@ -38,3 +39,8 @@ export const mapStateToProps = ({ movies }) => ({
 })
 
 export default connect(mapStateToProps)(MovieInfo); 
+
+MovieInfo.propTypes = {
+  id: PropTypes.number,
+  movies: PropTypes.array,
+}

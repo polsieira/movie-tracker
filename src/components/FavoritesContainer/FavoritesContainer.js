@@ -2,37 +2,47 @@ import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
 import { connect } from 'react-redux';
 import './FavoritesContainer.scss';
-import NavigationBar from '../NavigationBar/NavigationBar';
+import { Link } from 'react-router-dom';
 
-const MovieContainer = ({ movies, user }) => {
-  const favoritedMovies = movies.filter(movie => movie.isFavorite);
-
+const MovieContainer = ({ handleFavorite, favorites, user }) => {
   console.log(user)
-
-  const displayMovies = favoritedMovies.map(movie => {
+  const displayMovies = favorites.map(movie => {
     return (
       <MovieCard
         {...movie}
         key={movie.id}
         id={movie.id}
         movie={movie}
+        handleFavorite={handleFavorite}
       />
     )
   })
 
   return (
     <section className='favorites-container'>
-      <NavigationBar />
+      <div className='nav-buttons'>
+      {user.isSignedIn && <Link to='/login'>
+        <button className='sign-in-movie' type='button'>Sign Out</button>
+      </Link>}
+      {!user.isSignedIn && <Link to='/login'>
+        <button className='sign-in-movie' type='button'>Sign In</button>
+      </Link>}
+      <Link to='/'>
+        <button className='go-home' type='button'>Home</button>
+      </Link>
+      </div>
       <div className='favorites'>
-        {displayMovies}
+        {user.isSignedIn && displayMovies}
+        {!user.isSignedIn && <div className='fav-prompt'>Please Sign In To Add Favorites!</div>}
       </div>
     </section>
   )
 }
 
-const mapStateToProps = ({ movies, user }) => ({
-  movies,
-  user
+const mapStateToProps = ({ favorites, user }) => ({
+  favorites,
+  user 
 })
 
 export default connect(mapStateToProps)(MovieContainer)
+
