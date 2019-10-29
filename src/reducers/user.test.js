@@ -3,7 +3,7 @@ import { user } from './user';
 describe('user reducer', () => {
   it('should return the initial state', () => {
     //
-    const expectedState = [];
+    const expectedState = {};
 
     // Execution
     const result = user(undefined, {});
@@ -12,23 +12,27 @@ describe('user reducer', () => {
     expect(result).toEqual(expectedState);
   });
 
-  it('should return movies', () => {
+  it('should return a user', () => {
     //
-    const moviesToAdd = [{
-      title: 'Joker',
-      release_date: '2019',
-      average_rating: 7.5,
-      popularity: 68.55
-    }];
+    const name = 'Pol';
+    const id = 3;
+    const isSignedIn = true;
+    const userInfo = {
+      name,
+      id,
+      isSignedIn
+    };
     const mockAction = {
-      type: 'ADD_MOVIES',
-      movies: moviesToAdd
-    }
+      type: 'LOGIN_USER',
+      name,
+      id,
+      isSignedIn
+    };
 
     // Execution
-    const result = movies(undefined, mockAction);
+    const result = user(undefined, mockAction);
 
     // Expectation
-    expect(result).toEqual(moviesToAdd);
+    expect(result).toEqual(userInfo);
   });
 });

@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieInfo MovieInfo component should match a snapshot 1`] = `
+<div
+  className="MovieCard"
+>
+  <Link
+    className="MovieCardLink"
+    to="/movie/5"
+  >
+    <img
+      alt="movie poster"
+      className="movie-poster"
+      src="https://image.tmdb.org/t/p/original/http://pic.pic"
+    />
+    <div
+      className="movie"
+    >
+      <div
+        className="movie-info"
+      >
+        <h2
+          className="movie-title"
+        >
+          Wicked
+        </h2>
+        <h3
+          className="movie-vote"
+        >
+          6.5
+        </h3>
+        <h4
+          className="movie-release"
+        >
+          December 31, 2016
+        </h4>
+        <h4
+          className="movie-overview"
+        >
+          Blah
+        </h4>
+      </div>
+    </div>
+  </Link>
+  <button
+    className="favorite-btn"
+    id={5}
+    onClick={[Function]}
+    type="button"
+  >
+    <IoIosHeartEmpty
+      className="favorite-heart"
+    />
+  </button>
+</div>
+`;
