@@ -45,3 +45,54 @@ exports[`MovieContainer MovieContainer component should match a snapshot 1`] = `
   </div>
 </Fragment>
 `;
+
+exports[`MovieContainer MovieContainer component should render an error message 1`] = `
+<Fragment>
+  <Connect(NavigationBar) />
+  <p
+    className="errorMsg"
+  >
+    Unable to load movies. We hate movies. Go to IMDB.
+  </p>
+  <div
+    className="MovieContainer"
+  >
+    <Connect(MovieCard)
+      average_rating={6.5}
+      handleFavorite={[MockFunction]}
+      id={5}
+      key="5"
+      movie={
+        Object {
+          "average_rating": 6.5,
+          "id": 5,
+          "popularity": 55.55,
+          "release_date": "2017",
+          "title": "Wicked",
+        }
+      }
+      popularity={55.55}
+      release_date="2017"
+      title="Wicked"
+    />
+    <Connect(MovieCard)
+      average_rating={7.5}
+      handleFavorite={[MockFunction]}
+      id={6}
+      key="6"
+      movie={
+        Object {
+          "average_rating": 7.5,
+          "id": 6,
+          "popularity": 68.55,
+          "release_date": "2019",
+          "title": "Joker",
+        }
+      }
+      popularity={68.55}
+      release_date="2019"
+      title="Joker"
+    />
+  </div>
+</Fragment>
+`;
