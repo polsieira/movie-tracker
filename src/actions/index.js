@@ -72,7 +72,6 @@ export const fetchAndDeleteFavorite = (id, favorite_id) => {
 
 
 export const removeFavorite = (movieId) => {
-  console.log(movieId)
   return ({
     type: 'REMOVE_FAVORITE',
     movieId
