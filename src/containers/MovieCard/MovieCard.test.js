@@ -7,6 +7,7 @@ describe('MovieInfo', () => {
   describe('MovieInfo component', () => {
     let wrapper;
     const mockHandleFavorite = jest.fn();
+    const mockCheckFavorites = jest.fn();
     beforeEach(() => {
       wrapper = shallow(<MovieCard
         id={5}
@@ -16,6 +17,12 @@ describe('MovieInfo', () => {
         vote_average={6.5}
         overview='Blah'
         handleFavorite={mockHandleFavorite}
+        checkFavorites={mockCheckFavorites}
+        user={({
+          name: 'Pol',
+          id: 2,
+          isSignedIn: true
+        })}
       />)
     })
 

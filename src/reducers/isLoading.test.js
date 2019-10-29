@@ -16,7 +16,7 @@ describe('isLoading', () => {
     //
     const bool = true;
     const mockAction = {
-      type: 'IS_LOADING',
+      type: 'CHECK_IS_LOADING',
       bool
     }
 

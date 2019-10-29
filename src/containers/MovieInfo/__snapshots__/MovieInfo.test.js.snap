@@ -18,16 +18,6 @@ exports[`MovieInfo MovieInfo component should match a snapshot 1`] = `
           Home
         </button>
       </Link>
-      <Link
-        to="/login"
-      >
-        <button
-          className="sign-in-movie"
-          type="button"
-        >
-          Sign In
-        </button>
-      </Link>
     </div>
     <figure
       className="movie-figure"
