@@ -33,7 +33,7 @@ const MovieContainer = ({ handleFavorite, favorites, user }) => {
       </div>
       <div className='favorites'>
         {user.isSignedIn && displayMovies}
-        {!user.isSignedIn && <div className='fav-prompt'>Please Sign In</div>}
+        {!user.isSignedIn && <div className='fav-prompt'>Please Sign In To Add Favorites!</div>}
       </div>
     </section>
   )

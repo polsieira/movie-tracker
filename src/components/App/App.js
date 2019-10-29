@@ -31,6 +31,12 @@ class App extends Component {
     }
   }
 
+  checkFavorites = (movieId) => {
+    const { favorites } = this.props
+    let favorited = favorites.map(favorite => favorite.movie_id)
+    return favorited.includes(movieId)
+  }
+
   handleFavorite = (movie) => {
     const { favorites, user, fetchAndPostFavorite, fetchAndDeleteFavorite, getFavorites } = this.props;
     if (user.id) {
@@ -50,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Route exact path='/' render={() => <MovieContainer handleFavorite={this.handleFavorite} />} />
+        <Route exact path='/' render={() => <MovieContainer handleFavorite={this.handleFavorite} checkFavorites={this.checkFavorites} />} />
         <Route exact path='/login' render={() => <LoginForm />} />
         <Route exact path='/movie/:id' render={({match}) => <MovieInfo id={match.params} />} />
         <Route exact path='/favorites' render={() => <FavoritesContainer handleFavorite={this.handleFavorite} />}/>
