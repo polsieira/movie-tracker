@@ -4,7 +4,7 @@ import MovieCard from '../MovieCard/MovieCard';
 import NavigationBar from '../NavigationBar/NavigationBar';
 import { connect } from 'react-redux';
 
-const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
+export const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
   const displayMovies = movies.map(movie => {
     return (
       <MovieCard
@@ -29,7 +29,7 @@ const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
 
 }
 
-const mapStateToProps = ({ movies, errorMsg }) => ({
+export const mapStateToProps = ({ movies, errorMsg }) => ({
   movies,
   errorMsg
 });

@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationBar NavigationBar component should match a snapshot 1`] = `
+<div
+  className="NavigationBar"
+>
+  <form
+    action=""
+    className="nav-form"
+  >
+    <input
+      className="nav-input"
+      type="search"
+    />
+    <i
+      className="fa fa-search"
+    />
+  </form>
+  <h1
+    className="heading"
+  >
+    moooovies.
+  </h1>
+  <div
+    className="login-fav"
+  >
+    <Link
+      to="/login"
+    >
+      <button
+        className="sign-in"
+        type="button"
+      >
+        Sign In
+      </button>
+    </Link>
+    <Link
+      to="/favorites"
+    >
+      <button
+        className="favorites-button"
+        type="button"
+      >
+        Favorites
+      </button>
+    </Link>
+  </div>
+</div>
+`;
