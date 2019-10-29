@@ -15,7 +15,6 @@ export const MovieContainer = ({ movies, errorMsg, handleFavorite }) => {
         movie={movie}
         handleFavorite={handleFavorite}
         checkFavorites={checkFavorites}
-
       />
     )
   })
