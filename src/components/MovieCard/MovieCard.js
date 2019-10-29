@@ -8,7 +8,7 @@ import { fetchAndPostFavorite, fetchAndDeleteFavorite } from '../../actions'
 import PropTypes from 'prop-types'
 
 
-export const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite }) => {
+export const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite, checkFavorites, user }) => {
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
@@ -57,7 +57,7 @@ export const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps)(MovieCard);
+// export default connect(mapStateToProps)(MovieCard);
 
 const mapDispatchToProps = dispatch => ({
   addFavorite: (id, favorite) => dispatch(fetchAndPostFavorite(id, favorite)),
