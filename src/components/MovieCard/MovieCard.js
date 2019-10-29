@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 // import { postFavorite } from '../../apiCalls'
 import { fetchAndPostFavorite, fetchAndDeleteFavorite } from '../../actions'
 
-const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite, checkFavorites }) => {
+const MovieCard = ({ id, title, release_date, poster_path, overview, vote_average, handleFavorite, checkFavorites, user }) => {
   const d = new Date(`${release_date}`);
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const date = `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
@@ -28,7 +28,7 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
           </div>
         </div>
       </Link>
-      <button
+      {user.isSignedIn ? <button
         id={id}
         type='button'
         className='favorite-btn'
@@ -42,7 +42,10 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
             overview: overview
           })
         }}
-      >{faveHandler}</button>
+      >{faveHandler}</button> : <Link to='/login'><button
+      id={id}
+      type='button'
+      className='favorite-btn'>{favoriteBtn}</button></Link>}
     </div>
   )
 }
