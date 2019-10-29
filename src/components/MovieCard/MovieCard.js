@@ -28,7 +28,6 @@ const MovieCard = ({ id, title, release_date, poster_path, overview, vote_averag
         type='button'
         className='favorite-btn'
         onClick={() => {
-          console.log('clicked')
           handleFavorite({
             movie_id: id,
             title: title,
