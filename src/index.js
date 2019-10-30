@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers';
 import './index.scss';
-import App from './components/App/App';
+import App from './containers/App/App';
 import { HashRouter } from 'react-router-dom'
 import thunk from 'redux-thunk'
 
